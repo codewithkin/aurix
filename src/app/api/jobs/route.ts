@@ -12,6 +12,7 @@ export async function GET(request: Request) {
     budgetMax: searchParams.get('budgetMax') ? parseInt(searchParams.get('budgetMax')!) : undefined,
     keywords: searchParams.get('keywords')?.split(','),
   };
+  
 
   try {
     const scrapers = {
