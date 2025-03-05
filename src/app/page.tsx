@@ -1,8 +1,14 @@
 import MainContent from "@/components/MainContent";
 import Topbar from "@/components/shared/Topbar";
 import React from "react";
+import axios from "axios"
 
 export default async function Home() {
+  const res = await axios.get("http://localhost:3000/api/jobs") as {data: {jobs?: any[]}};
+  
+  const jobs = res.data.jobs;
+
+  console.log(res.data);
   return (
     <>
       <Topbar />
