@@ -3,15 +3,23 @@ import playwright from "playwright";
 
 await Actor.init();
 
+// Get search term from Apify input
+const input = await Actor.getInput();
+const searchTerm = input?.searchTerm || "web developer"; // Default if empty
+
+console.log(`🔍 Searching for jobs related to: ${searchTerm}`);
+
+// Format the search term for Upwork URL
+const formattedSearchTerm = encodeURIComponent(searchTerm);
+const JOB_SEARCH_URL = `https://www.upwork.com/nx/search/jobs/?q=${formattedSearchTerm}&sort=recency`;
+
 const browser = await playwright.chromium.launch({ headless: true });
 const page = await browser.newPage();
 
-const JOB_SEARCH_URL =
-  "https://www.upwork.com/nx/search/jobs/?q=web%20developer&sort=recency";
-
-console.log("🔍 Navigating to Upwork Jobs...");
+console.log("🌍 Navigating to Upwork Jobs...");
 await page.goto(JOB_SEARCH_URL, { waitUntil: "networkidle" });
 
+// Wait for job listings to load
 await page.waitForSelector("section.air3-card-hover");
 
 const jobs = await page.evaluate(() => {
@@ -40,10 +48,10 @@ const jobs = await page.evaluate(() => {
   return jobListings;
 });
 
-console.log(`✅ Scraped ${jobs.length} jobs.`);
+console.log(`✅ Scraped ${jobs.length} jobs for '${searchTerm}'`);
 
-// Store results in Apify Dataset (so we can fetch via API)
-await Actor.pushData(jobs);
+// Store results in Apify Dataset (accessible via API)
+await Actor.pushData({ searchTerm, jobs });
 
 await browser.close();
 await Actor.exit();
