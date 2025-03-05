@@ -1,4 +1,4 @@
-"use state";
+"use client";
 import { useState } from "react";
 import Search from "./main/Search";
 import { Button } from "./ui/button";
@@ -12,16 +12,16 @@ import axios from "axios";
 import { urls } from "@/lib/urls";
 
 function MainContent() {
-  const results = 10;
-
   const [query, setQuery] = useState("");
 
-  const { mutate: search, isPending: loading } = useMutation({
+  const { mutate: search, isPending: loading, data: response } = useMutation({
     mutationKey: ["search"],
     mutationFn: async () => {
-      const res = await axios.get(`${urls.backendUrl}/api/jobs?q=${query}`) as {data: {jobs?: any[]}};
+      const res = await axios.get(`${urls.backendUrl}/api/jobs?q=${query}`) as {data: { jobs?: any[] }};
+
+      return res.data;
     }
-  })
+  });
 
   return (
     <article className="flex gap-8 justify-center w-full p-8">
@@ -77,7 +77,7 @@ function MainContent() {
 
       {/* Main content */}
       <main className="w-3/4">
-        <h3 className="text-xl">{results} Results</h3>
+        <h3 className="text-xl">{response?.jobs || 0} Results</h3>
         <Search />
       </main>
     </article>
