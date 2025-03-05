@@ -4,8 +4,10 @@ import { Button } from "./ui/button";
 import { Label } from "./ui/label";
 import { Calendar } from "./ui/calendar";
 import { Checkbox } from "./ui/checkbox";
+import { Slider } from "./ui/slider";
 
 function MainContent() {
+  const results = 10;
 
   return (
     <article className="flex gap-2 items-center w-full p-8">
@@ -61,7 +63,8 @@ function MainContent() {
 
       {/* Main content */}
       <main className="w-3/4">
-            <Search />
+        <h3 className="text-2xl">{results} Results  </h3>
+        <Search />
       </main>
     </article>
   );
