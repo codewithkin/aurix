@@ -1,9 +1,11 @@
 import React from 'react'
 
-function Home() {
+export default async function Home() {
+  const jobs = await fetch("http://localhost:3000/api/jobs");
+
+  console.log(jobs);
+
   return (
     <section></section>
   )
 }
-
-export default Home
