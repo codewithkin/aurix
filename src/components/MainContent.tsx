@@ -1,4 +1,5 @@
 import React from "react";
+import Search from "./main/Search";
 
 function MainContent() {
   return (
@@ -12,7 +13,7 @@ function MainContent() {
 
       {/* Main content */}
       <main className="w-3/4">
-            
+            <Search />
       </main>
     </article>
   );
