@@ -1,11 +1,11 @@
 import { PlaywrightCrawler } from 'crawlee';
 
 const crawler = new PlaywrightCrawler({
-    requestHandler: async ({ page }: { page: any }) => {
+    requestHandler: async ({ page }) => {
         // Wait for the actor cards to render.
         await page.waitForSelector('.collection-block-item');
 
-        const categoryTexts: string[] = await page.$$eval('.collection-block-item', (els: Element[]) => {
+        const categoryTexts = await page.$$eval('.collection-block-item', (els) => {
             // Extract text content from the actor cards
             return els.map((el) => el.textContent || '');
         });
@@ -15,4 +15,4 @@ const crawler = new PlaywrightCrawler({
     },
 });
 
-await crawler.run(['https://warehouse-theme-metal.myshopify.com/collections']);
+crawler.run(['https://warehouse-theme-metal.myshopify.com/collections']);
