@@ -20,7 +20,13 @@ export default async function Home() {
       </article>
     </article>
 
-    article.flex.gap-8.items-center.justify-between
+    <article className="flex gap-8 items-center justify-between">
+      {/* Filters sidebar */}
+      <aside></aside>
+
+      {/* Main content */}
+      <main></main>
+    </article>
     </>
   )
 }
