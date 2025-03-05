@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import { Job, JobsResponse } from "../../types/job";
+import type { Job, JobsResponse } from "../../types/job";
 
 export default async function getJobs(req: Request, res: Response<JobsResponse>) {
   try {

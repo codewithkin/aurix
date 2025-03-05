@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("combined"));
 
-app.get('/', (_req: Request, res: Response) => {
+app.get('/', (_req: Request , res: Response ) => {
     res.send('Hey there!');
 });
 
