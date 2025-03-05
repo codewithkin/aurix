@@ -4,8 +4,7 @@ const crawler = new PlaywrightCrawler({
     requestHandler: async ({ page }: { page: any }) => {
         // Wait for the actor cards to render.
         await page.waitForSelector('.collection-block-item');
-        // Execute a function in the browser which targets
-        // the actor card elements and allows their manipulation.
+
         const categoryTexts: string[] = await page.$$eval('.collection-block-item', (els: Element[]) => {
             // Extract text content from the actor cards
             return els.map((el) => el.textContent || '');
