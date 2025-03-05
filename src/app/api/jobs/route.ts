@@ -29,10 +29,10 @@ export async function GET(req: Request): Promise<NextResponse> {
     await page.goto(JOB_SEARCH_URL, { waitUntil: "networkidle" });
 
     // Wait for job listings to load
-    await page.waitForSelector("section.air3-card-hover");
+    await page.waitForSelector("section.air3-card-list");
 
     const jobs: JobListing[] = await page.evaluate(() => {
-      const jobCards = document.querySelectorAll("section.air3-card-hover");
+      const jobCards = document.querySelectorAll("section.air3-card-list");
       const jobListings: JobListing[] = [];
 
       jobCards.forEach((job) => {

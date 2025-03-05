@@ -6,6 +6,6 @@ export default async function Home() {
   console.log(jobs);
 
   return (
-    <section></section>
+    
   )
 }
