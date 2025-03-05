@@ -1,17 +1,17 @@
 import express from 'express';
 import morgan from "morgan";
-import routes from "./src/routes";
+import routes from "./routes";
 
-const app = express();
-const port = process.env.port || 8080;
+const app: Express = express();
+const port: number = process.env.PORT ? parseInt(process.env.PORT) : 8080;
 
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(morgan("combined"))
+app.use(morgan("combined"));
 
-app.get('/', (req, res) => {
-    res.send('Hey there !');
+app.get('/', (_req: Request, res: Response) => {
+    res.send('Hey there!');
 });
 
 app.use("/api", routes);
