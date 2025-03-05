@@ -8,7 +8,7 @@ export default async function Home() {
     <Topbar />
 
     {/* Header */}
-    <article className='p-16 border-y bg-gray-100 border-slate-400'>
+    <article className='p-16 border-y bg-gray-100 border-slate-300'>
       <article className='flex flex-col gap-4 justify-center md:max-w-6xl'>
         <h2 className='font-semibold text-3xl'>Explore gigs across <span className="text-sky-700">the entire internet</span></h2>
         <p className="text-lg text-gray-600">

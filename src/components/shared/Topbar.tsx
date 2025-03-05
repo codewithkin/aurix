@@ -2,7 +2,7 @@ import { Bell } from "lucide-react"
 
 function Topbar() {
   return (
-    <article className="shadow-sm border-b border-slate-600 flex justify-between items-center px-8 py-4">
+    <article className="shadow-sm border-b border-slate-300 flex justify-between items-center px-8 py-4">
         {/* Branding */}
         <article className="flex gap-4 items-cente">
             <article className="flex flex-col">
