@@ -3,9 +3,9 @@ import Search from "./main/Search";
 
 function MainContent() {
   return (
-    <article className="flex gap-8 items-center justify-between">
+    <article className="flex gap-2 items-center w-full">
       {/* Filters sidebar */}
-      <aside className="p-8 w-1/4">
+      <aside className="p-4 w-1/4">
         <article className="p-4 rounded-md border border-gray-200">
           <h2>Hi</h2>
         </article>
