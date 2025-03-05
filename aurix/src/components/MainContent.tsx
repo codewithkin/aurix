@@ -1,13 +1,20 @@
 import React from "react";
 import Search from "./main/Search";
+import { Button } from "./ui/button";
 
 function MainContent() {
   return (
     <article className="flex gap-2 items-center w-full p-8">
       {/* Filters sidebar */}
       <aside className="w-1/4">
-        <article className="p-4 rounded-md border border-gray-200">
-          <h2>Hi</h2>
+        <article className="rounded-md border border-gray-200">
+          <article className="border-b border-gray-200 p-4 flex justify-between items-center">
+            <h2 className="text-xl font-semibold">Filters</h2>
+
+            <Button type="submit" variant="outline" className="text-purple-600 border-purple-600 hover:text-purple-400 hover:border-purple-400 hover:bg-white">
+              Clear Filters
+            </Button>
+          </article>
         </article>
       </aside>
 
