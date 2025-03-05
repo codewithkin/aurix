@@ -10,7 +10,7 @@ function Search() {
         type='search'
       />
 
-      <Button variant="default" className='bg-sky-700 text-white p-6'>
+      <Button variant="default" className='bg-sky-400 text-white p-6'>
         Search
       </Button>
     </article>

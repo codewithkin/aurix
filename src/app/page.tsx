@@ -12,7 +12,7 @@ export default async function Home() {
         <article className="flex flex-col gap-4 justify-center md:max-w-6xl">
           <h2 className="font-semibold text-3xl">
             Explore gigs across{" "}
-            <span className="text-sky-700">the entire internet</span>
+            <span className="text-sky-400">the entire internet</span>
           </h2>
           <p className="text-lg text-gray-600">
             Discover freelance gigs from top platforms like Upwork, AngelList,
