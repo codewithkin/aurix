@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import QueryProvider from "@/providers/QueryProvider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
     type: "website",
     title: "Aurix | Your Go-To Platform for Freelance Gigs & Job Opportunities",
     description: "Aurix helps freelancers find the best job opportunities from top platforms. Explore gigs and grow your freelance career today!",
-    url: "https://aurix.space",  // Replace with your actual site URL
+    url: "https://aurix.space",
   },
   twitter: {
     card: "summary_large_image",
@@ -31,7 +32,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} antialiased`}>{children}</body>
+      <body className={`${poppins.className} antialiased`}>
+        <QueryProvider>
+          {children}
+        </QueryProvider>
+      </body>
     </html>
   );
 }
