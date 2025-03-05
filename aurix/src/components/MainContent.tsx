@@ -1,8 +1,12 @@
 import React from "react";
 import Search from "./main/Search";
 import { Button } from "./ui/button";
+import { Label } from "./ui/label";
+import { Calendar } from "./ui/calendar";
+import { Checkbox } from "./ui/checkbox";
 
 function MainContent() {
+
   return (
     <article className="flex gap-2 items-center w-full p-8">
       {/* Filters sidebar */}
@@ -19,11 +23,37 @@ function MainContent() {
           <article className="flex flex-col gap-8 items-center p-4">
             <article>
               <Label>Date Posted</Label>
-              <Calender />
+              <Calendar />
             </article>
 
             <article>
-              
+              <Label>Price Range</Label>
+              <Slider defaultValue={[0]} max={5000} step={10} />
+            </article>
+
+            <article>
+              <Label>Platforms</Label>
+              <article className="flex gap-4 items-center">
+                <article className="flex gap-2 items-center">
+                  <Checkbox name="upwork" id="upwork" />
+                  <Label>Upwork</Label>
+                </article>
+
+                <article className="flex gap-2 items-center">
+                  <Checkbox name="angellist" id="angellist" />
+                  <Label>AngelList</Label>
+                </article>
+
+                <article className="flex gap-2 items-center">
+                  <Checkbox name="contra" id="contra" />
+                  <Label>Contra</Label>
+                </article>
+
+                <article className="flex gap-2 items-center">
+                  <Checkbox name="fiverr" id="fiverr" />
+                  <Label>Fiverr</Label>
+                </article>
+              </article>
             </article>
           </article>
         </article>
