@@ -1,6 +1,6 @@
-import { Sidebar } from '@/components/dashboard/Sidebar';
-import { TopBar } from '@/components/dashboard/TopBar';
-import { FilterPanel } from '@/components/dashboard/FilterPanel';
+import { Sidebar } from "@/components/dashboard/Sidebar";
+import { TopBar } from "@/components/dashboard/TopBar";
+import { FilterPanel } from "@/components/dashboard/FilterPanel";
 
 export default function DashboardLayout({
   children,
@@ -17,4 +17,4 @@ export default function DashboardLayout({
       </div>
     </div>
   );
-} 
+}

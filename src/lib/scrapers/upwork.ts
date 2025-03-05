@@ -29,9 +29,7 @@ const jobs = await page.evaluate(() => {
   jobCards.forEach((job) => {
     const titleElement = job.querySelector("h2 a");
     const descriptionElement = job.querySelector("div.job-tile-description");
-    const budgetElement = job.querySelector(
-      "strong[data-test='budget-price']"
-    );
+    const budgetElement = job.querySelector("strong[data-test='budget-price']");
     const clientElement = job.querySelector("div[data-test='client-info']");
 
     jobListings.push({

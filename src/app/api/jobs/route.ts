@@ -37,14 +37,20 @@ export async function GET(req: Request): Promise<NextResponse> {
 
       jobCards.forEach((job) => {
         const titleElement = job.querySelector("h2 a");
-        const descriptionElement = job.querySelector("div.job-tile-description");
-        const budgetElement = job.querySelector("strong[data-test='budget-price']");
+        const descriptionElement = job.querySelector(
+          "div.job-tile-description",
+        );
+        const budgetElement = job.querySelector(
+          "strong[data-test='budget-price']",
+        );
         const clientElement = job.querySelector("div[data-test='client-info']");
 
         jobListings.push({
           title: titleElement ? titleElement.innerText.trim() : "No title",
           url: titleElement ? titleElement.href : "#",
-          description: descriptionElement ? descriptionElement.innerText.trim() : "No description",
+          description: descriptionElement
+            ? descriptionElement.innerText.trim()
+            : "No description",
           budget: budgetElement ? budgetElement.innerText.trim() : "N/A",
           client_info: clientElement ? clientElement.innerText.trim() : "N/A",
         });
@@ -61,6 +67,9 @@ export async function GET(req: Request): Promise<NextResponse> {
     return NextResponse.json({ searchTerm, jobs }, { status: 200 });
   } catch (error) {
     console.error("❌ Scraper error:", error);
-    return NextResponse.json({ error: "Failed to fetch jobs" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to fetch jobs" },
+      { status: 500 },
+    );
   }
 }

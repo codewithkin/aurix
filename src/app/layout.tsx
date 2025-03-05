@@ -4,8 +4,8 @@ import "./globals.css";
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ['200', '400', '600']
-})
+  weight: ["200", "400", "600"],
+});
 
 export const metadata: Metadata = {
   title: "Aurix",
@@ -19,11 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${poppins.className} antialiased`}
-      >
-        {children}
-      </body>
+      <body className={`${poppins.className} antialiased`}>{children}</body>
     </html>
   );
 }

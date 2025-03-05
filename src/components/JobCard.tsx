@@ -1,6 +1,12 @@
-import { Job } from '@/types/job';
-import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { Job } from "@/types/job";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 interface JobCardProps {
   job: Job;
@@ -18,13 +24,16 @@ export default function JobCard({ job }: JobCardProps) {
       <CardContent>
         <p className="text-gray-600 mb-4">{job.description}</p>
         <div className="flex flex-wrap gap-2">
-          {job.techStack.map(tech => (
-            <Badge key={tech} variant="outline">{tech}</Badge>
+          {job.techStack.map((tech) => (
+            <Badge key={tech} variant="outline">
+              {tech}
+            </Badge>
           ))}
         </div>
         {job.budget && (
           <p className="mt-4 text-sm text-gray-500">
-            Budget: {job.budget.currency}{job.budget.min} - {job.budget.max}
+            Budget: {job.budget.currency}
+            {job.budget.min} - {job.budget.max}
           </p>
         )}
       </CardContent>
@@ -43,4 +52,4 @@ export default function JobCard({ job }: JobCardProps) {
       </CardFooter>
     </Card>
   );
-} 
+}

@@ -2,7 +2,7 @@ export interface Job {
   id: string;
   title: string;
   description: string;
-  platform: 'Upwork' | 'AngelList' | 'WeWorkRemotely' | 'IndieHackers' | 'YC';
+  platform: "Upwork" | "AngelList" | "WeWorkRemotely" | "IndieHackers" | "YC";
   budget?: {
     min: number;
     max: number;
@@ -19,4 +19,4 @@ export type JobFilters = {
   budgetMin?: number;
   budgetMax?: number;
   keywords?: string[];
-}; 
+};
