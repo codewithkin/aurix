@@ -2,11 +2,12 @@
   "name": "aurix",
   "version": "1.0.0",
   "description": "Aurix is a web scraping tool that allows you to extract data from any website.",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
+    "lint": "next lint",
     "format": "prettier --write ."
   },
   "dependencies": {
