@@ -1,14 +1,4 @@
 {
-  "name": "aurix",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "format": "prettier --write .",
-  },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.2",
     "apify": "^3.3.2",
@@ -28,7 +18,9 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "browserslist": "^4.24.4",
     "postcss": "^8",
+    "prettier": "3.5.3",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }

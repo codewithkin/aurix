@@ -7,6 +7,7 @@ export default async function Home() {
   console.log(jobs);
 
   return (
+    <>
     <Topbar />
 
     {/* Header */}
@@ -18,5 +19,8 @@ export default async function Home() {
         </p>
       </article>
     </article>
+
+    article.flex.gap-8.items-center.justify-between
+    </>
   )
 }
