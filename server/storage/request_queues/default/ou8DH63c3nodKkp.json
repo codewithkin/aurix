@@ -1,9 +1,9 @@
 {
 	"id": "ou8DH63c3nodKkp",
-	"json": "{\"id\":\"ou8DH63c3nodKkp\",\"url\":\"https://www.upwork.com/nx/search/jobs/?from_recent_search=true&q=web%20developer\",\"loadedUrl\":\"https://www.upwork.com/nx/search/jobs/?from_recent_search=true&q=web%20developer\",\"uniqueKey\":\"https://www.upwork.com/nx/search/jobs?from_recent_search=true&q=web+developer\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":1,\"errorMessages\":[\"page.waitForSelector: Timeout 30000ms exceeded.\\nCall log:\\n\\u001b[2m  - waiting for locator('.job-tile') to be visible\\u001b[22m\\n\\n    at PlaywrightCrawler.requestHandler (/home/codewithkin/Desktop/projects/aurix/server/src/scrapers/upwork.js:9:24)\\n    at /home/codewithkin/Desktop/projects/aurix/server/node_modules/@crawlee/browser/internals/browser-crawler.js:287:87\\n    at wrap (/home/codewithkin/Desktop/projects/aurix/server/node_modules/@apify/timeout/cjs/index.cjs:54:27)\\n    at /home/codewithkin/Desktop/projects/aurix/server/node_modules/@apify/timeout/cjs/index.cjs:68:7\\n    at /home/codewithkin/Desktop/projects/aurix/server/node_modules/@apify/timeout/cjs/index.cjs:67:13\\n    at addTimeoutToPromise (/home/codewithkin/Desktop/projects/aurix/server/node_modules/@apify/timeout/cjs/index.cjs:61:10)\\n    at PlaywrightCrawler._runRequestHandler (/home/codewithkin/Desktop/projects/aurix/server/node_modules/@crawlee/browser/internals/browser-crawler.js:287:53)\\n    at async PlaywrightCrawler._runRequestHandler (/home/codewithkin/Desktop/projects/aurix/server/node_modules/@crawlee/playwright/internals/playwright-crawler.js:114:9)\\n    at async wrap (/home/codewithkin/Desktop/projects/aurix/server/node_modules/@apify/timeout/cjs/index.cjs:54:21)\"],\"headers\":{},\"userData\":{\"__crawlee\":{\"state\":4}},\"handledAt\":\"2025-03-05T15:23:09.139Z\"}",
+	"json": "{\"id\":\"ou8DH63c3nodKkp\",\"url\":\"https://www.upwork.com/nx/search/jobs/?from_recent_search=true&q=web%20developer\",\"uniqueKey\":\"https://www.upwork.com/nx/search/jobs?from_recent_search=true&q=web+developer\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{}}",
 	"method": "GET",
-	"orderNo": null,
-	"retryCount": 1,
+	"orderNo": 1741242888254,
+	"retryCount": 0,
 	"uniqueKey": "https://www.upwork.com/nx/search/jobs?from_recent_search=true&q=web+developer",
 	"url": "https://www.upwork.com/nx/search/jobs/?from_recent_search=true&q=web%20developer"
 }
