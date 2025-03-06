@@ -1,45 +1,62 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Ignore all node_modules in any subdirectory
+node_modules/
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
+# Ignore build artifacts
+dist/
+build/
+.out/
+.next/
+.vite/
+.vercel/
+.cache/
+.tmp/
 
-**/node_modules
-**/.next
-**/*/.next
+# Ignore lockfiles except for a root one (if using a single lockfile strategy)
+**/package-lock.json
+**/yarn.lock
+**/pnpm-lock.yaml
 
-# testing
-/coverage
+# Ignore editor-specific files
+.vscode/
+.idea/
+*.swp
 
-# next.js
-/.next/
-/out/
+# Ignore environment variables
+.env
+.env.local
+.env.*.local
 
-# production
-/build
+# Ignore dependency installs from system packages
+.npm/
+.pnp/
+.pnp.js
 
-# misc
-.DS_Store
-*.pem
-
-# debug
+# Ignore logs and debugging files
+logs/
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.pnpm-debug.log*
+pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# Ignore macOS and system files
+.DS_Store
+Thumbs.db
 
-# vercel
-.vercel
-
-# typescript
+# Ignore TypeScript build files
 *.tsbuildinfo
-next-env.d.ts
+
+# Ignore coverage reports
+coverage/
+
+# Ignore dependency archives
+*.tgz
+
+# Ignore output from tools like ESLint, Jest, or Cypress
+eslintcache
+jest/
+cypress/videos/
+cypress/screenshots/
+
+# Ignore Git hooks if using Husky
+.husky/_/
