@@ -13,8 +13,6 @@ export default async function UpworkScraper(term = "webdeveloper") {
                     return els.map((el) => {
                         return {
                             title: el.querySelector(".job-tile-title").textContent,
-                            description: el.querySelector(".text-body-sm").textContent,
-                            date: el.querySelector(".text-light").textContent
                         }
                     });
                 });
