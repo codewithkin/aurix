@@ -1,7 +1,17 @@
+import { LaunchContext } from "crawlee";
 import { PlaywrightCrawler } from "crawlee";
 
 export default async function UpworkScraper(term = "webdeveloper") {
     const crawler = new PlaywrightCrawler({
+        LaunchContext: {
+            launchOptions : {
+                proxy: {
+                    server: "http://38.154.227.167:qfuvxtfm",
+                    username: "qfuvxtfm",
+                    password: "k5244vgnipsu" 
+                }
+            }
+        },
         requestHandler: async ({ page }) => {
             try {
                 console.log("UPWORK CRAWLER STARTING...");
@@ -13,6 +23,8 @@ export default async function UpworkScraper(term = "webdeveloper") {
                     return els.map((el) => {
                         return {
                             title: el.querySelector(".job-tile-title").textContent,
+                            description: el.querySelector(".text-body-sm").textContent,
+                            date: el.querySelector(".text-light").textContent
                         }
                     });
                 });
