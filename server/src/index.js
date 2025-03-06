@@ -8,8 +8,6 @@ app.get('/', (req, res) => {
   res.send('Welcome to the Express server!');
 });
 
-UpworkScraper();
-
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

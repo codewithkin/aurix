@@ -14,7 +14,7 @@ export default async function UpworkScraper(term = "webdeveloper") {
                     return els.map((el) => {
                         return {
                             title: el.querySelector(".job-tile-title").textContent,
-                            description: el.querySelector(".text-body-sm").textContent,
+                            description: el.querySelector(".text-body-sm").textContent.replace(/\s+/g, ' ').trim(),
                             date: el.querySelector(".text-light").textContent
                         }
                     });
