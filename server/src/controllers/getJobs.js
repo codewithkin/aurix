@@ -11,7 +11,7 @@ export default async function GetJobs (req, res) {
 
             return res.json(jobs);
         }
-
+ 
         // Create dummy jobs
         const jobs = await UpworkScraper();
 

@@ -1,7 +1,7 @@
 import { PlaywrightCrawler } from "crawlee";
 
 export default async function UpworkScraper(term = "webdeveloper") {
-    let res;
+    let res = [];
 
     const crawler = new PlaywrightCrawler({
         requestHandler: async ({ page }) => {
