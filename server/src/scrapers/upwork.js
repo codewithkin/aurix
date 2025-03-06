@@ -1,20 +1,25 @@
-import { PlaywrightCrawler } from 'crawlee';
+import { PlaywrightCrawler } from "crawlee";
 
-export default function upworkCrawler () {
+export default function upworkCrawler() {
     const crawler = new PlaywrightCrawler({
         requestHandler: async ({ page }) => {
+            console.log("STARTING CRAWLER");
+
             // Wait for the actor cards to render.
-            await page.waitForSelector('.collection-block-item');
+            await page.waitForSelector('.job-tile');
     
-            const categoryTexts: string[] = await page.$$eval('.collection-block-item', (els: Element[]) => {
+            const titles = await page.$$eval('.job-tile', (els) => {
+                console.log(els);
+
                 // Extract text content from the actor cards
                 return els.map((el) => el.textContent || '');
             });
-            categoryTexts.forEach((text, i) => {
-                console.log(`CATEGORY_${i + 1}: ${text}\n`);
-            });
+
+            console.log("CRAWLER FINISHED");
         },
     });
     
     crawler.run(['https://www.upwork.com/nx/search/jobs/?from_recent_search=true&q=web%20developer']);
 }
+
+upworkCrawler();
