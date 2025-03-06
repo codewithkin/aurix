@@ -1,9 +1,9 @@
 {
-  "usableSessionsCount": 1,
+  "usableSessionsCount": 2,
   "retiredSessionsCount": 0,
   "sessions": [
     {
-      "id": "session_k00HOgAczT",
+      "id": "session_PMoZ6Wk1PJ",
       "cookieJar": {
         "version": "tough-cookie@5.1.2",
         "storeType": "MemoryCookieStore",
@@ -16,9 +16,382 @@
       "userData": {},
       "maxErrorScore": 3,
       "errorScoreDecrement": 0.5,
-      "expiresAt": "2025-03-06T07:24:47.838Z",
-      "createdAt": "2025-03-06T06:34:47.838Z",
+      "expiresAt": "2025-03-06T08:24:51.446Z",
+      "createdAt": "2025-03-06T07:34:51.446Z",
       "usageCount": 0,
+      "maxUsageCount": 50,
+      "errorScore": 0
+    },
+    {
+      "id": "session_DlfUjr1CSx",
+      "cookieJar": {
+        "version": "tough-cookie@5.1.2",
+        "storeType": "MemoryCookieStore",
+        "rejectPublicSuffixes": true,
+        "enableLooseMode": false,
+        "allowSpecialUseDomain": true,
+        "prefixSecurity": "silent",
+        "cookies": [
+          {
+            "key": "visitor_topnav_gql_token",
+            "value": "oauth2v2_c91bdb49ce20b7e0df7ca6bc77f7b702",
+            "expires": "2025-03-07T07:35:00.061Z",
+            "domain": "www.upwork.com",
+            "path": "/nx/search/jobs",
+            "hostOnly": true,
+            "creation": "2025-03-06T07:35:15.231Z",
+            "lastAccessed": "2025-03-06T07:35:15.231Z"
+          },
+          {
+            "key": "visitor_id",
+            "value": "197.221.254.18.1741246493210000",
+            "expires": "2025-03-06T08:25:15.229Z",
+            "domain": "upwork.com",
+            "path": "/",
+            "secure": true,
+            "hostOnly": false,
+            "creation": "2025-03-06T07:35:15.232Z",
+            "lastAccessed": "2025-03-06T07:35:15.232Z"
+          },
+          {
+            "key": "UniversalSearchNuxt_vt",
+            "value": "oauth2v2_36f1bd429a947d1cd453349bae363fd0",
+            "expires": "2025-03-07T07:34:53.572Z",
+            "domain": "upwork.com",
+            "path": "/",
+            "secure": true,
+            "hostOnly": false,
+            "creation": "2025-03-06T07:35:15.237Z",
+            "lastAccessed": "2025-03-06T07:35:15.237Z"
+          },
+          {
+            "key": "country_code",
+            "value": "ZW",
+            "expires": "2025-03-06T08:25:15.229Z",
+            "domain": "upwork.com",
+            "path": "/",
+            "secure": true,
+            "hostOnly": false,
+            "creation": "2025-03-06T07:35:15.238Z",
+            "lastAccessed": "2025-03-06T07:35:15.238Z"
+          },
+          {
+            "key": "cookie_prefix",
+            "expires": "2025-03-06T08:25:15.229Z",
+            "domain": "www.upwork.com",
+            "path": "/",
+            "secure": true,
+            "hostOnly": true,
+            "creation": "2025-03-06T07:35:15.238Z",
+            "lastAccessed": "2025-03-06T07:35:15.238Z"
+          },
+          {
+            "key": "cookie_domain",
+            "value": ".upwork.com",
+            "expires": "2025-03-06T08:25:15.229Z",
+            "domain": "www.upwork.com",
+            "path": "/",
+            "secure": true,
+            "hostOnly": true,
+            "creation": "2025-03-06T07:35:15.238Z",
+            "lastAccessed": "2025-03-06T07:35:15.238Z"
+          },
+          {
+            "key": "__cf_bm",
+            "value": "Ym1KWGvIYq1xlfNlHASFDr.pygM1N1b7smxjzzoWxRA-1741246493-1.0.1.1-rX2.jS2BCjkDmGJ1tcIFRxdzWgAKls9KGYVD678ZwmIaVrzeZL0mOGYqAv.A7bb1_mv8bRaBP5GoYEwotcgfuZrm1PqJiiTROgdm_aXLOVw",
+            "expires": "2025-03-06T08:04:53.572Z",
+            "domain": "upwork.com",
+            "path": "/",
+            "secure": true,
+            "httpOnly": true,
+            "hostOnly": false,
+            "creation": "2025-03-06T07:35:15.238Z",
+            "lastAccessed": "2025-03-06T07:35:15.238Z"
+          },
+          {
+            "key": "__cflb",
+            "value": "02DiuEXPXZVk436fJfSVuuwDqLqkhavJasUByaUmcaS7m",
+            "expires": "2025-03-13T07:34:53.572Z",
+            "domain": "www.upwork.com",
+            "path": "/",
+            "secure": true,
+            "httpOnly": true,
+            "hostOnly": true,
+            "creation": "2025-03-06T07:35:15.239Z",
+            "lastAccessed": "2025-03-06T07:35:15.239Z"
+          },
+          {
+            "key": "_cfuvid",
+            "value": "QWjX0Omr3.ZldgAuHUHxLhtrFs5e5qKiDfGyg0YZXYQ-1741246493908-0.0.1.1-604800000",
+            "expires": "2025-03-06T08:25:15.229Z",
+            "domain": "upwork.com",
+            "path": "/",
+            "secure": true,
+            "httpOnly": true,
+            "hostOnly": false,
+            "creation": "2025-03-06T07:35:15.239Z",
+            "lastAccessed": "2025-03-06T07:35:15.239Z"
+          },
+          {
+            "key": "umq",
+            "value": "1920",
+            "expires": "2025-09-02T07:34:57.748Z",
+            "domain": "upwork.com",
+            "path": "/",
+            "secure": true,
+            "hostOnly": false,
+            "creation": "2025-03-06T07:35:15.239Z",
+            "lastAccessed": "2025-03-06T07:35:15.239Z"
+          },
+          {
+            "key": "enabled_ff",
+            "value": "!MP16400Air3Migration,JPAir3,!CI10857Air3Dot0,TONB2256Air3Migration,!RMTAir3Offers,CI9570Air2Dot5,!CI12577UniversalSearch,!SSINavUser,OTBnrOn,air2Dot76,!RMTAir3Home,!RMTAir3Offer,!i18nGA,!air2Dot76Qt,!RMTAir3Talent,i18nOn,SSINavUserBpa,!RMTAir3Hired,CI17409DarkModeUI,CI11132Air2Dot75,!CI10270Air2Dot5QTAllocations",
+            "expires": "2025-03-06T08:25:15.229Z",
+            "domain": "www.upwork.com",
+            "path": "/",
+            "secure": true,
+            "hostOnly": true,
+            "creation": "2025-03-06T07:35:15.239Z",
+            "lastAccessed": "2025-03-06T07:35:15.239Z"
+          },
+          {
+            "key": "AWSALBTG",
+            "value": "NH/bnq0NDsKVx6YWSCn1Z+Kdd7Waj2GwMYXhkd4TdrEJC5x7bqpHK5WZUpkd8dweGfjdCy2qDj2pKQGQrk0yBft8+UnFHWBJVvfWvTqHD+GbMkqnGCmD2EBDrwwSjgxXVcWdCBJ7v6ktga9CiMaX+vvLR12rfNasVoJYxxsk78Fc",
+            "expires": "2025-03-13T07:34:59.994Z",
+            "domain": "www.upwork.com",
+            "path": "/",
+            "hostOnly": true,
+            "creation": "2025-03-06T07:35:15.239Z",
+            "lastAccessed": "2025-03-06T07:35:15.239Z"
+          },
+          {
+            "key": "AWSALBTGCORS",
+            "value": "NH/bnq0NDsKVx6YWSCn1Z+Kdd7Waj2GwMYXhkd4TdrEJC5x7bqpHK5WZUpkd8dweGfjdCy2qDj2pKQGQrk0yBft8+UnFHWBJVvfWvTqHD+GbMkqnGCmD2EBDrwwSjgxXVcWdCBJ7v6ktga9CiMaX+vvLR12rfNasVoJYxxsk78Fc",
+            "expires": "2025-03-13T07:34:59.994Z",
+            "domain": "www.upwork.com",
+            "path": "/",
+            "secure": true,
+            "hostOnly": true,
+            "creation": "2025-03-06T07:35:15.239Z",
+            "lastAccessed": "2025-03-06T07:35:15.239Z"
+          },
+          {
+            "key": "_upw_ses.5831",
+            "value": "*",
+            "expires": "2025-03-06T08:05:02.000Z",
+            "domain": "upwork.com",
+            "path": "/",
+            "secure": true,
+            "hostOnly": false,
+            "creation": "2025-03-06T07:35:15.239Z",
+            "lastAccessed": "2025-03-06T07:35:15.239Z"
+          },
+          {
+            "key": "cf_clearance",
+            "value": "3sYoSeywo3eVPSodvaZTlapZvjFN2LAchKUWaXgndt8-1741246501-1.2.1.1-JsVZETmUdEUTYONv5Jh53W6UUOpaGRK12myDevzmmFK7D3vysUy9PbTXQZbPjQFNw_Tgmso7yZ2lLZ_XC91FYA2mkMWFgZPLMeeLHreXXe2xIVeJHDHYFWP7MwLymSXUNFvBBbOCh2rQWPKoSQ913htDIVZFsHAnKRlu9t94eJ8jKMj60Fnq3ddEjfuhWrjUn_xhGTI67Ky7x8gDpvLjXtBdeApbulElrVOPtyiyGOjR7oLOCVV0wR8sKVI_UuwQPjKaur2p8eGeHBmws30A1GCkSxEN7UFGtxUGjXN4bJK07CAEoUp9N8CM4Ezg5z4ZOUu5jIVnIe4_.S9cic35NQ1v5E9N4HLSvQVFWo9an_TsIHQpkBi2i43qeW6VuvgLHds7zsdqtm9Tc6.PZgqjb1NOsvPxbIWds8ZNCXsKTNE",
+            "expires": "2026-03-06T07:35:01.045Z",
+            "domain": "upwork.com",
+            "path": "/",
+            "secure": true,
+            "httpOnly": true,
+            "hostOnly": false,
+            "creation": "2025-03-06T07:35:15.239Z",
+            "lastAccessed": "2025-03-06T07:35:15.239Z"
+          },
+          {
+            "key": "AWSALB",
+            "value": "1J9o8IfPBFzZWJ7IG+PQRkzmjFt9u/SYXCCcpLaz/RChGyASthy9qzEOHgprDGDAu5WaHo8OAJDadmytLJRaNfidXAghF7GWdpV6Ywahn3eKMLThgAMkpkkheLYZ",
+            "expires": "2025-03-13T07:35:01.768Z",
+            "domain": "www.upwork.com",
+            "path": "/",
+            "hostOnly": true,
+            "creation": "2025-03-06T07:35:15.240Z",
+            "lastAccessed": "2025-03-06T07:35:15.240Z"
+          },
+          {
+            "key": "AWSALBCORS",
+            "value": "1J9o8IfPBFzZWJ7IG+PQRkzmjFt9u/SYXCCcpLaz/RChGyASthy9qzEOHgprDGDAu5WaHo8OAJDadmytLJRaNfidXAghF7GWdpV6Ywahn3eKMLThgAMkpkkheLYZ",
+            "expires": "2025-03-13T07:35:01.768Z",
+            "domain": "www.upwork.com",
+            "path": "/",
+            "secure": true,
+            "hostOnly": true,
+            "creation": "2025-03-06T07:35:15.240Z",
+            "lastAccessed": "2025-03-06T07:35:15.240Z"
+          },
+          {
+            "key": "spt",
+            "value": "c3e708b0-7235-4bc5-b2c9-dea9101b4062",
+            "expires": "2026-03-06T07:35:01.768Z",
+            "domain": "upwork.com",
+            "path": "/",
+            "secure": true,
+            "httpOnly": true,
+            "hostOnly": false,
+            "creation": "2025-03-06T07:35:15.240Z",
+            "lastAccessed": "2025-03-06T07:35:15.240Z"
+          },
+          {
+            "key": "_gcl_au",
+            "value": "1.1.763136506.1741246502",
+            "expires": "2025-06-04T07:35:02.000Z",
+            "domain": "upwork.com",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2025-03-06T07:35:15.240Z",
+            "lastAccessed": "2025-03-06T07:35:15.240Z"
+          },
+          {
+            "key": "_cq_duid",
+            "value": "1.1741246501.horE15wIKcj7tEwk",
+            "expires": "2025-06-05T13:35:01.000Z",
+            "domain": "upwork.com",
+            "path": "/",
+            "secure": true,
+            "hostOnly": false,
+            "creation": "2025-03-06T07:35:15.240Z",
+            "lastAccessed": "2025-03-06T07:35:15.240Z"
+          },
+          {
+            "key": "_cq_suid",
+            "value": "1.1741246501.OGl5y0Jpcs5GCf9X",
+            "expires": "2025-03-06T08:25:15.229Z",
+            "domain": "upwork.com",
+            "path": "/",
+            "secure": true,
+            "hostOnly": false,
+            "creation": "2025-03-06T07:35:15.240Z",
+            "lastAccessed": "2025-03-06T07:35:15.240Z"
+          },
+          {
+            "key": "OptanonConsent",
+            "value": "isGpcEnabled=0&datestamp=Thu+Mar+06+2025+09%3A35%3A02+GMT%2B0200+(Central+Africa+Time)&version=202305.1.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=bd92ccd6-1e4d-418d-9da2-84d4031153a9&interactionCount=0&landingPath=https%3A%2F%2Fwww.upwork.com%2Fnx%2Fsearch%2Fjobs%2F%3Ffrom_recent_search%3Dtrue%26q%3Dwebdeveloper&groups=C0001%3A1%2CC0002%3A1%2CC0003%3A1%2CC0004%3A1",
+            "expires": "2026-03-06T07:35:02.000Z",
+            "domain": "upwork.com",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2025-03-06T07:35:15.240Z",
+            "lastAccessed": "2025-03-06T07:35:15.240Z"
+          },
+          {
+            "key": "_upw_id.5831",
+            "value": "8552f760-86a0-44f0-9590-393fae26b9b7.1741246501.1.1741246502..7a92af5e-3e8d-4da5-a47f-0ed667e14e39..1a60688a-5a16-4c3c-9c0f-053ac46b45cb.1741246500749.10",
+            "expires": "2026-04-10T07:35:02.407Z",
+            "domain": "upwork.com",
+            "path": "/",
+            "secure": true,
+            "hostOnly": false,
+            "creation": "2025-03-06T07:35:15.240Z",
+            "lastAccessed": "2025-03-06T07:35:15.240Z"
+          },
+          {
+            "key": "_tt_enable_cookie",
+            "value": "1",
+            "expires": "2026-03-31T07:35:04.000Z",
+            "domain": "upwork.com",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2025-03-06T07:35:15.241Z",
+            "lastAccessed": "2025-03-06T07:35:15.241Z"
+          },
+          {
+            "key": "_ttp",
+            "value": "01JNN627N7Z9VA4PEWDAV1M14X_.tt.1",
+            "expires": "2026-03-31T07:35:04.000Z",
+            "domain": "upwork.com",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2025-03-06T07:35:15.242Z",
+            "lastAccessed": "2025-03-06T07:35:15.242Z"
+          },
+          {
+            "key": "_gcl_au",
+            "value": "1.1.763136506.1741246502",
+            "expires": "2025-06-04T07:35:02.000Z",
+            "domain": "www.upwork.com",
+            "path": "/",
+            "hostOnly": true,
+            "creation": "2025-03-06T07:35:15.242Z",
+            "lastAccessed": "2025-03-06T07:35:15.242Z"
+          },
+          {
+            "key": "_uetsid",
+            "value": "873f77e0fa5d11ef9348f51fda98a68f",
+            "expires": "2025-03-07T07:35:07.000Z",
+            "domain": "upwork.com",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2025-03-06T07:35:15.242Z",
+            "lastAccessed": "2025-03-06T07:35:15.242Z"
+          },
+          {
+            "key": "_uetvid",
+            "value": "873fba10fa5d11efbd15b5be42253c68",
+            "expires": "2026-03-31T07:35:07.000Z",
+            "domain": "upwork.com",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2025-03-06T07:35:15.242Z",
+            "lastAccessed": "2025-03-06T07:35:15.242Z"
+          },
+          {
+            "key": "_uetsid",
+            "value": "873f77e0fa5d11ef9348f51fda98a68f",
+            "expires": "2025-03-07T07:35:07.000Z",
+            "domain": "www.upwork.com",
+            "path": "/",
+            "hostOnly": true,
+            "creation": "2025-03-06T07:35:15.242Z",
+            "lastAccessed": "2025-03-06T07:35:15.242Z"
+          },
+          {
+            "key": "_uetvid",
+            "value": "873fba10fa5d11efbd15b5be42253c68",
+            "expires": "2026-03-31T07:35:07.000Z",
+            "domain": "www.upwork.com",
+            "path": "/",
+            "hostOnly": true,
+            "creation": "2025-03-06T07:35:15.242Z",
+            "lastAccessed": "2025-03-06T07:35:15.242Z"
+          },
+          {
+            "key": "_fbp",
+            "value": "fb.1.1741246509430.958560322343680657",
+            "expires": "2025-06-04T07:35:11.000Z",
+            "domain": "upwork.com",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2025-03-06T07:35:15.242Z",
+            "lastAccessed": "2025-03-06T07:35:15.242Z"
+          },
+          {
+            "key": "forterToken",
+            "value": "7f4de90f041e40d8b7363ac5d12ca421_1741246500492__UDF43-mnf-a4_23ck_inKKrI9KQ1c%3D-2797-v2",
+            "expires": "2026-04-10T07:35:11.000Z",
+            "domain": "upwork.com",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2025-03-06T07:35:15.242Z",
+            "lastAccessed": "2025-03-06T07:35:15.242Z"
+          },
+          {
+            "key": "forterToken",
+            "value": "7f4de90f041e40d8b7363ac5d12ca421_1741246500492__UDF43-mnf-a4_23ck_inKKrI9KQ1c%3D-2797-v2",
+            "expires": "2026-04-10T07:35:11.000Z",
+            "domain": "www.upwork.com",
+            "path": "/",
+            "hostOnly": false,
+            "creation": "2025-03-06T07:35:15.242Z",
+            "lastAccessed": "2025-03-06T07:35:15.242Z"
+          }
+        ]
+      },
+      "userData": {},
+      "maxErrorScore": 3,
+      "errorScoreDecrement": 0.5,
+      "expiresAt": "2025-03-06T08:24:51.451Z",
+      "createdAt": "2025-03-06T07:34:51.451Z",
+      "usageCount": 2,
       "maxUsageCount": 50,
       "errorScore": 0
     }

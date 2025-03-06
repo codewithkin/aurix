@@ -1,9 +1,0 @@
-{
-	"id": "ou8DH63c3nodKkp",
-	"json": "{\"id\":\"ou8DH63c3nodKkp\",\"url\":\"https://www.upwork.com/nx/search/jobs/?from_recent_search=true&q=web%20developer\",\"uniqueKey\":\"https://www.upwork.com/nx/search/jobs?from_recent_search=true&q=web+developer\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{}}",
-	"method": "GET",
-	"orderNo": 1741242888254,
-	"retryCount": 0,
-	"uniqueKey": "https://www.upwork.com/nx/search/jobs?from_recent_search=true&q=web+developer",
-	"url": "https://www.upwork.com/nx/search/jobs/?from_recent_search=true&q=web%20developer"
-}
