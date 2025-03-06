@@ -3,7 +3,7 @@ import UpworkScraper from "../lib/scrapers/upwork.js";
 export default async function GetJobs (req, res) {
     try {
         // Get the user's search query (if any);
-        const q = req.query("q");
+        const {q} = req.query;
 
         if(q) {
             // Create dummy jobs
