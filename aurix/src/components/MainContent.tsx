@@ -12,8 +12,10 @@ import axios from "axios";
 import { urls } from "@/lib/urls";
 import { Loader, Loader2 } from "lucide-react";
 import { Skeleton } from "./ui/skeleton";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./ui/card";
+import { Badge } from "./ui/badge";
 
-function MainContent({jobs, fetching = true} : {jobs: any, fetching: boolean}) {
+function MainContent({jobs, fetching} : {jobs: any, fetching: boolean}) {
   const [query, setQuery] = useState("");
 
   const { mutate: search, isPending: loading, data: response } = useMutation({
@@ -93,6 +95,24 @@ function MainContent({jobs, fetching = true} : {jobs: any, fetching: boolean}) {
           <>
             <h3 className="text-xl">{response?.jobs || 0} Results</h3>
             <Search />
+
+            {/* Jobs Cards */}
+            <article className="flex flex-col gap-4 my-4">
+              {jobs?.map((job: any, index: number) => (
+                <Card key={index}>
+                    <CardContent>
+                      <CardHeader>
+                        <Badge variant="default" className="bg-purple-600 text-white font-semibold">{job.date}</Badge>
+                        <CardTitle className="capitalize text-xl font-semibold">{job.title}</CardTitle>
+                      </CardHeader>
+
+                      <CardFooter>
+                        <p className="text-slate-600 text-sm">{job.description.slice(0, 500).concat("...")}</p>
+                      </CardFooter>
+                    </CardContent>
+                </Card>
+              ))}
+            </article>
           </>
         }
       </main>
