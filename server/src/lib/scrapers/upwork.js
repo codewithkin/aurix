@@ -4,6 +4,15 @@ export default async function UpworkScraper(term = "webdeveloper") {
     let res = [];
 
     const crawler = new PlaywrightCrawler({
+        launchContext: {
+            launchOptions: {
+                proxy: {
+                    server: "http://173.211.0.148:6641",
+                    username: "qfuvxtfm",
+                    password: "k5244vgnipsu"
+                }
+            }
+        },
         requestHandler: async ({ page }) => {
             try {
                 console.log("UPWORK CRAWLER STARTING...");

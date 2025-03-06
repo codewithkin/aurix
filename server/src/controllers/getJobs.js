@@ -7,8 +7,7 @@ export default async function GetJobs (req, res) {
         let jobs;
 
         if(q) {
-            // Create dummy jobs
-            const jobs = await UpworkScraper(q);
+            jobs = await UpworkScraper(q);
 
             return res.json(jobs);
         }
