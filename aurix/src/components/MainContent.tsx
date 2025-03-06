@@ -10,8 +10,9 @@ import { Input } from "./ui/input";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { urls } from "@/lib/urls";
+import { Loader, Loader2 } from "lucide-react";
 
-function MainContent() {
+function MainContent({jobs, fetching} : {jobs: any, fetching: boolean}) {
   const [query, setQuery] = useState("");
 
   const { mutate: search, isPending: loading, data: response } = useMutation({
@@ -77,8 +78,16 @@ function MainContent() {
 
       {/* Main content */}
       <main className="w-3/4">
-        <h3 className="text-xl">{response?.jobs || 0} Results</h3>
-        <Search />
+        {
+          fetching ?
+          <article className="w-full h-full flex flex-cul justify-center items-center">
+            <Loader2 className="animate-spin text-blue-700" size={50} /> 
+          </article> :
+          <>
+            <h3 className="text-xl">{response?.jobs || 0} Results</h3>
+            <Search />
+          </>
+        }
       </main>
     </article>
   );

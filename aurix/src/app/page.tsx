@@ -35,7 +35,7 @@ export default function Home() {
         </article>
       </article>
 
-      <MainContent />
+      <MainContent fetching={isPending} jobs={jobs} />
     </>
   );
 }
