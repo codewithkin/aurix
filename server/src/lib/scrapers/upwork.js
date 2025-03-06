@@ -3,10 +3,10 @@ import { PlaywrightCrawler } from "crawlee";
 
 export default async function UpworkScraper(term = "webdeveloper") {
     const crawler = new PlaywrightCrawler({
-        LaunchContext: {
+        launchContext: {
             launchOptions : {
                 proxy: {
-                    server: "http://38.154.227.167:qfuvxtfm",
+                    server: "http://38.154.227.167:5868",
                     username: "qfuvxtfm",
                     password: "k5244vgnipsu" 
                 }
