@@ -9,7 +9,8 @@ import getJobs from "@/lib/queries/getJobs";
 export default function Home() {
   const { data: jobs, isPending } = useQuery({
     queryKey: ["getJobs"],
-    queryFn: async () => await getJobs()
+    queryFn: async () => await getJobs(),
+    staleTime: Infinity
   })
 
   console.log("Jobs: ", jobs);
