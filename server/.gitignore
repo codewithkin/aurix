@@ -46,6 +46,8 @@ Thumbs.db
 # Ignore TypeScript build files
 *.tsbuildinfo
 
+storage
+
 # Ignore coverage reports
 coverage/
 
