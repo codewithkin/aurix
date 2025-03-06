@@ -1,14 +1,17 @@
+"use client";
 import MainContent from "@/components/MainContent";
 import Topbar from "@/components/shared/Topbar";
 import React from "react";
 import axios from "axios"
+import { useQuery } from "@tanstack/react-query";
+import getJobs from "@/lib/queries/getJobs";
 
 export default async function Home() {
-  const res = await axios.get(`http://localhost:8080/api/jobs`) as {data: {jobs?: any[]}};
-  
-  const jobs = res.data.jobs;
+  const {  } = useQuery({
+    queryKey: ["getJobs"],
+    queryFn: async () => getJobs()
+  })
 
-  console.log(res.data);
   return (
     <>
       <Topbar />
