@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
 import type { Job, JobsResponse } from "../../types/job";
 
-export default async function getJobs(req: Request, res: Response<JobsResponse>) {
+export default async function getJobs(req: Request, res: Response) {
   try {
     // Dummy jobs
     const jobs: Job[] = [

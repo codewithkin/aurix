@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 import morgan from "morgan";
-import routes from "./routes";
+import routes from "./routes/jobs";
 import upworkCrawler from './scrapers/upwork';
 
 const app = express();
