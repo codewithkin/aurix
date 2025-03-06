@@ -4,6 +4,7 @@ export default async function GetJobs (req, res) {
     try {
         // Get the user's search query (if any);
         const {q} = req.query;
+        let jobs;
 
         if(q) {
             // Create dummy jobs
@@ -12,8 +13,9 @@ export default async function GetJobs (req, res) {
             return res.json(jobs);
         }
  
-        // Create dummy jobs
-        const jobs = await UpworkScraper();
+        if(!jobs) {
+            jobs = await UpworkScraper();
+        }
 
         return res.json(jobs);
     } catch (e) {
