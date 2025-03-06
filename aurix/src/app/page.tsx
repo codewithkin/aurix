@@ -6,11 +6,13 @@ import axios from "axios"
 import { useQuery } from "@tanstack/react-query";
 import getJobs from "@/lib/queries/getJobs";
 
-export default async function Home() {
-  const {  } = useQuery({
+export default function Home() {
+  const { data: jobs, isPending } = useQuery({
     queryKey: ["getJobs"],
-    queryFn: async () => getJobs()
+    queryFn: async () => await getJobs()
   })
+
+  console.log("Jobs: ", jobs);
 
   return (
     <>
