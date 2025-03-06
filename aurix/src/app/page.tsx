@@ -2,10 +2,9 @@ import MainContent from "@/components/MainContent";
 import Topbar from "@/components/shared/Topbar";
 import React from "react";
 import axios from "axios"
-import { urls } from "@/lib/urls";
 
 export default async function Home() {
-  const res = await axios.get(`${urls.backendUrl}/api/jobs`) as {data: {jobs?: any[]}};
+  const res = await axios.get(`http://localhost:8080/api/jobs`) as {data: {jobs?: any[]}};
   
   const jobs = res.data.jobs;
 
