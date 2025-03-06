@@ -102,7 +102,8 @@ function MainContent({jobs, fetching} : {jobs: any, fetching: boolean}) {
                 <Card key={index}>
                     <CardContent>
                       <CardHeader>
-                        <Badge variant="default" className="bg-purple-600 text-white font-semibold">{job.date}</Badge>
+                      
+                        <Badge variant="default" className="bg-purple-600 text-white font-semibold w-fit text-xs rounded-full">{job.date}</Badge>
                         <CardTitle className="capitalize text-xl font-semibold">{job.title}</CardTitle>
                       </CardHeader>
 
