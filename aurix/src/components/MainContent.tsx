@@ -11,8 +11,9 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { urls } from "@/lib/urls";
 import { Loader, Loader2 } from "lucide-react";
+import { Skeleton } from "./ui/skeleton";
 
-function MainContent({jobs, fetching} : {jobs: any, fetching: boolean}) {
+function MainContent({jobs, fetching = true} : {jobs: any, fetching: boolean}) {
   const [query, setQuery] = useState("");
 
   const { mutate: search, isPending: loading, data: response } = useMutation({
@@ -80,8 +81,14 @@ function MainContent({jobs, fetching} : {jobs: any, fetching: boolean}) {
       <main className="w-3/4">
         {
           fetching ?
-          <article className="w-full h-full flex flex-cul justify-center items-center">
-            <Loader2 className="animate-spin text-blue-700" size={50} /> 
+          <article className="w-full h-full flex flex-col">
+            <article className="flex flex-col gap-2 w-full justify-center">
+              <Skeleton className="w-20 h-6 rounded-lg" />
+              <article className="flex gap-4 items-center w-full">
+                <Skeleton className="w-full h-12 rounded-lg" />
+                <Skeleton className="w-1/6 h-12 rounded-lg" />
+              </article>
+            </article>
           </article> :
           <>
             <h3 className="text-xl">{response?.jobs || 0} Results</h3>
