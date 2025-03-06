@@ -5,11 +5,11 @@ import axios from "axios"
 import { urls } from "@/lib/urls";
 
 export default async function Home() {
-  // const res = await axios.get(`${urls.backendUrl}/api/jobs`) as {data: {jobs?: any[]}};
+  const res = await axios.get(`${urls.backendUrl}/api/jobs`) as {data: {jobs?: any[]}};
   
-  // const jobs = res.data.jobs;
+  const jobs = res.data.jobs;
 
-  // console.log(res.data);
+  console.log(res.data);
   return (
     <>
       <Topbar />
