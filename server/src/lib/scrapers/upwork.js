@@ -3,15 +3,6 @@ import { PlaywrightCrawler } from "crawlee";
 
 export default async function UpworkScraper(term = "webdeveloper") {
     const crawler = new PlaywrightCrawler({
-        launchContext: {
-            launchOptions : {
-                proxy: {
-                    server: "http://38.154.227.167:5868",
-                    username: "qfuvxtfm",
-                    password: "k5244vgnipsu" 
-                }
-            }
-        },
         requestHandler: async ({ page }) => {
             try {
                 console.log("UPWORK CRAWLER STARTING...");
@@ -19,7 +10,7 @@ export default async function UpworkScraper(term = "webdeveloper") {
                 await page.waitForSelector(".job-tile");
 
                 // Extract job details and pass to Node.js
-                const jobs = await page.c$$eval(".job-tile", (els) => {
+                const jobs = await page.$$eval(".job-tile", (els) => {
                     return els.map((el) => {
                         return {
                             title: el.querySelector(".job-tile-title").textContent,
@@ -28,6 +19,8 @@ export default async function UpworkScraper(term = "webdeveloper") {
                         }
                     });
                 });
+
+                console.log(jobs);
 
                 return jobs;
             } catch (e) {
