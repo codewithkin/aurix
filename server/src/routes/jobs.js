@@ -1,5 +1,5 @@
 import {Router} from "express";
-import GetJobs from "src/controllers/getJobs.js";
+import GetJobs from "../controllers/getJobs.js"
 
 const router = Router();
 

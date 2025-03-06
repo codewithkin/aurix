@@ -1,4 +1,4 @@
-import UpworkScraper from "src/lib/scrapers/upwork.js";
+import UpworkScraper from "../lib/scrapers/upwork.js";
 
 export default async function GetJobs (req, res) {
     try {
