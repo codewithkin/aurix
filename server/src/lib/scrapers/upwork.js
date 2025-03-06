@@ -1,9 +1,5 @@
 import { PlaywrightCrawler } from "crawlee";
 
-export async function getContentFromSelector(el, selector, content) {
-    return el.querySelector(selector)[content];
-}
-
 export default async function UpworkScraper(term = "webdeveloper") {
     const crawler = new PlaywrightCrawler({
         requestHandler: async ({ page }) => {
@@ -13,15 +9,17 @@ export default async function UpworkScraper(term = "webdeveloper") {
                 await page.waitForSelector(".job-tile");
 
                 // Extract job details and pass to Node.js
-                const jobs = await page.$$eval(".job-tile", (els) => {
+                const jobs = await page.c$$eval(".job-tile", (els) => {
                     return els.map((el) => {
                         return {
-                            title: getContentFromSelector(el, "job-tile-title", "textContent")
+                            title: el.querySelector(".job-tile-title").textContent,
+                            description: el.querySelector(".text-body-sm").textContent,
+                            date: el.querySelector(".text-light").textContent
                         }
                     });
                 });
 
-                console.log("Extracted Jobs:", jobs);
+                return jobs;
             } catch (e) {
                 console.log("UPWORK CRAWLER FAILED...", e);
             }
