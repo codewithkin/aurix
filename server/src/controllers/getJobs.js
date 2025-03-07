@@ -1,10 +1,18 @@
 import RedditScraper from "../lib/scrapers/reddit.js";
 import UpworkScraper from "../lib/scrapers/upwork.js";
+import fs from "fs";
 
 export default async function GetJobs(req, res) {
     try {
         const { q } = req.query;
         const jobs = [];
+
+        // Check if the storage folder exists
+        if(fs.existsSync("./storage")) {
+            // Delete the storage folder
+            console.log("Storage folder exists, deleting....")
+            fs.rmdirSync("./storage", { recursive: true });
+        }
 
         const [redditJobs, upworkJobs] = await Promise.all([
             RedditScraper(),
