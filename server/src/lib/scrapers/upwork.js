@@ -5,6 +5,13 @@ export default async function UpworkScraper(term = "webdeveloper") {
 
     const crawler = new PlaywrightCrawler({
         storage,
+        maxConcurrency: 2,
+        launchContext: {
+            launchOptions: {
+                headless: true, // Saves RAM
+                args: ['--no-sandbox', '--disable-setuid-sandbox'],
+            },
+        },
         requestHandler: async ({ page }) => {
             try {
                 console.log("UPWORK CRAWLER STARTING...");
