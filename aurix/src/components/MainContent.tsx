@@ -52,7 +52,10 @@ function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
   // });
 
   const filteredJobs = (jobs ?? []).filter((job: any) => {
-    return platform === "All" || job.platform.toLowerCase() === platform.toLowerCase();
+    return (
+      platform === "All" ||
+      job.platform.toLowerCase() === platform.toLowerCase()
+    );
   });
 
   return (
@@ -115,49 +118,53 @@ function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
           </article>
         ) : (
           <>
-            <h3 className="text-xl">{jobs.length || 0} Results</h3>
+            <h3 className="text-2xl font-semibold">{jobs.length || 0} Results</h3>
             {/* <Search /> */}
 
             {/* Jobs Cards */}
-            {filteredJobs?.map((job: any, index: number) => (
-  job && (
-    <Card key={index}>
-      <CardContent>
-        <CardHeader>
-          <article
-            className={`${
-              job.platform === "reddit" ? "text-red-600" : "text-green-600"
-            } flex gap-4 items-center font-semibold`}
-          >
-            <Image
-              alt={`${job.platform} logo`}
-              src={`/logos/${job.platform}.png`}
-              width={28}
-              height={28}
-            />
-            <h2 className="capitalize">{job.platform}</h2>
-          </article>
-          <Badge
-            variant="default"
-            className="bg-purple-600 text-white font-semibold w-fit text-xs rounded-full"
-          >
-            {job.date}
-          </Badge>
-          <CardTitle className="capitalize text-xl font-semibold">
-            {job.title}
-          </CardTitle>
-        </CardHeader>
+            <article className="grid md:grid-cols-2 gap-4 my-4">
+              {filteredJobs?.map(
+                (job: any, index: number) =>
+                  job && (
+                    <Card key={index}>
+                      <CardContent>
+                        <CardHeader>
+                          <article
+                            className={`${
+                              job.platform === "reddit"
+                                ? "text-red-600"
+                                : "text-green-600"
+                            } flex gap-4 items-center font-semibold`}
+                          >
+                            <Image
+                              alt={`${job.platform} logo`}
+                              src={`/logos/${job.platform}.png`}
+                              width={28}
+                              height={28}
+                            />
+                            <h2 className="capitalize">{job.platform}</h2>
+                          </article>
+                          <Badge
+                            variant="default"
+                            className="bg-purple-600 text-white font-semibold w-fit text-xs rounded-full"
+                          >
+                            {job.date}
+                          </Badge>
+                          <CardTitle className="capitalize text-xl font-semibold">
+                            {job.title}
+                          </CardTitle>
+                        </CardHeader>
 
-        <CardFooter>
-          <p className="text-slate-600 text-sm">
-            {job.description.slice(0, 500).concat("...")}
-          </p>
-        </CardFooter>
-      </CardContent>
-    </Card>
-  )
-))}
-
+                        <CardFooter>
+                          <p className="text-slate-600 text-sm">
+                            {job.description.slice(0, 500).concat("...")}
+                          </p>
+                        </CardFooter>
+                      </CardContent>
+                    </Card>
+                  ),
+              )}
+            </article>
           </>
         )}
       </main>
