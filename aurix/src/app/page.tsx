@@ -2,7 +2,7 @@
 import MainContent from "@/components/MainContent";
 import Topbar from "@/components/shared/Topbar";
 import React from "react";
-import axios from "axios"
+import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import getJobs from "@/lib/queries/getJobs";
 
@@ -10,8 +10,8 @@ export default function Home() {
   const { data: jobs, isPending } = useQuery({
     queryKey: ["getJobs"],
     queryFn: async () => await getJobs(),
-    staleTime: Infinity
-  })
+    staleTime: Infinity,
+  });
 
   console.log("Jobs: ", jobs);
 
