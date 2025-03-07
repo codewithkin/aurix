@@ -1,55 +1,30 @@
 import { PlaywrightCrawler } from "crawlee";
 
 export default async function UpworkScraper(term = "webdeveloper") {
-    let res = [];
+    const results = [];
 
     const crawler = new PlaywrightCrawler({
-        // launchContext: {
-        //     launchOptions: {
-        //         proxy: {
-        //             server: "http://173.211.0.148:6641",
-        //             username: "qfuvxtfm",
-        //             password: "k5244vgnipsu"
-        //         }
-        //     }
-        // },
         requestHandler: async ({ page }) => {
             try {
                 console.log("UPWORK CRAWLER STARTING...");
-
                 await page.waitForSelector(".job-tile");
 
-                // Extract job details and pass to Node.js
                 const jobs = await page.$$eval(".job-tile", (els) => {
-                    return els.map((el) => {
-                        return {
-                            platform: "upwork",
-                            title: el.querySelector(".job-tile-title").textContent,
-                            description: el.querySelector(".text-body-sm").textContent.replace(/\s+/g, ' ').trim(),
-                            date: el.querySelector(".text-light").textContent
-                        }
-                    });
+                    return els.map((el) => ({
+                        platform: "upwork",
+                        title: el.querySelector(".job-tile-title")?.textContent?.trim() || "No title",
+                        description: el.querySelector(".text-body-sm")?.textContent?.trim() || "No description",
+                        date: el.querySelector(".text-light")?.textContent?.trim() || "No date",
+                    }));
                 });
 
-                res = jobs;
-
-                // Return the scraped jobs
-                return jobs;
+                results.push(...jobs);
             } catch (e) {
-                console.log("UPWORK CRAWLER FAILED...", e);
-                return []; // Return an empty array on failure
+                console.error("UPWORK CRAWLER FAILED:", e);
             }
-        }
-    })
+        },
+    });
 
-    if(res.length < 1) {
-        // Run the crawler and capture the results
-        await crawler.run([`https://www.upwork.com/nx/search/jobs/?from_recent_search=true&q=${term}`]);
-
-        console.log(res);
-    }
-
-    await crawler.run([`https://www.upwork.com/nx/search/jobs/?from_recent_search=true&q=${term}`]);
-
-    return res;
+    await crawler.run([`https://www.upwork.com/nx/search/jobs/?q=${term}`]);
+    return results;
 }
