@@ -98,7 +98,7 @@ function MainContent({jobs, fetching} : {jobs: any, fetching: boolean}) {
             <Search />
 
             {/* Jobs Cards */}
-            <article className="flex flex-col gap-4 my-4">
+            <article className="grid md:grid-cols-2 gap-4 my-4">
               {jobs?.map((job: any, index: number) => (
                 job &&
                 <Card key={index}>
