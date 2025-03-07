@@ -42,7 +42,7 @@ function MainContent({jobs, fetching} : {jobs: any, fetching: boolean}) {
           </article>
 
           <article className="flex flex-col gap-8 justify-center p-4">
-            <article className="flex flex-col gap-2">
+            {/* <article className="flex flex-col gap-2">
               <Label>Date Posted</Label>
               <Input type="date" />
             </article>
@@ -50,7 +50,7 @@ function MainContent({jobs, fetching} : {jobs: any, fetching: boolean}) {
             <article className="flex flex-col gap-2">
               <Label>Price Range</Label>
               <Slider defaultValue={[0]} max={5000} step={10} />
-            </article>
+            </article> */}
 
             <article className="flex flex-col gap-2">
               <Label>Platforms</Label>
@@ -61,18 +61,8 @@ function MainContent({jobs, fetching} : {jobs: any, fetching: boolean}) {
                 </article>
 
                 <article className="flex gap-2 items-center">
-                  <Checkbox name="angellist" id="angellist" />
-                  <Label>AngelList</Label>
-                </article>
-
-                <article className="flex gap-2 items-center">
-                  <Checkbox name="contra" id="contra" />
-                  <Label>Contra</Label>
-                </article>
-
-                <article className="flex gap-2 items-center">
-                  <Checkbox name="fiverr" id="fiverr" />
-                  <Label>Fiverr</Label>
+                  <Checkbox name="reddit" id="reddit" />
+                  <Label>Reddit</Label>
                 </article>
               </article>
             </article>
