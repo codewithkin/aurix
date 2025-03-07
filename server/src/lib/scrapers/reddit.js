@@ -49,12 +49,12 @@ export default async function RedditScraper() {
 
     if(res.length < 1) {
         // Run the crawler and capture the results
-        await crawler.run([`https://www.reddit.com/r/forhire/`]);
+        await crawler.run([`https://www.reddit.com/r/forhire/`, `https://www.reddit.com/r/freelance_forhire/`]);
 
         console.log(res);
     }
 
-    await crawler.run([`https://www.reddit.com/r/forhire/`]);
+    await crawler.run([`https://www.reddit.com/r/forhire/`, `https://www.reddit.com/r/freelance_forhire/`]);
 
     return res;
 }
