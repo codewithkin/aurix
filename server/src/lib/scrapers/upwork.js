@@ -4,6 +4,7 @@ export default async function UpworkScraper(term = "webdeveloper") {
     const results = [];
 
     const crawler = new PlaywrightCrawler({
+        storage,
         requestHandler: async ({ page }) => {
             try {
                 console.log("UPWORK CRAWLER STARTING...");

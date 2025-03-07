@@ -4,6 +4,7 @@ export default async function RedditScraper() {
     const results = [];
 
     const crawler = new PlaywrightCrawler({
+        storage,
         requestHandler: async ({ page }) => {
             try {
                 console.log("REDDIT CRAWLER STARTING...");
