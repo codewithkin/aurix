@@ -49,12 +49,12 @@ export default async function IndieHackersScraper() {
 
     if(res.length < 1) {
         // Run the crawler and capture the results
-        await crawler.run([`https://www.indiehackers.com/group/jobs?utm_source=chatgpt.com`]);
+        await crawler.run([`https://www.indiehackers.com/group/jobs`]);
 
         console.log(res);
     }
 
-    await crawler.run([`https://www.indiehackers.com/group/jobs?utm_source=chatgpt.com`]);
+    await crawler.run([`https://www.indiehackers.com/group/jobs`]);
 
     return res;
 }
