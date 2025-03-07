@@ -4,6 +4,8 @@ export default async function RedditScraper() {
     const results = [];
 
     const crawler = new PlaywrightCrawler({
+        // Use memory storage
+        storage: ":memory:",
         maxConcurrency: 2,
         launchContext: {
             launchOptions: {

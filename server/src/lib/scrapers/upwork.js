@@ -4,6 +4,9 @@ export default async function UpworkScraper(term = "webdeveloper") {
     const results = [];
 
     const crawler = new PlaywrightCrawler({
+        // Use memory storage
+        storage: ":memory:",
+        requestQueue,
         maxConcurrency: 2,
         launchContext: {
             launchOptions: {
