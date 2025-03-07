@@ -31,6 +31,8 @@ export default async function RedditScraper() {
                                 date: el.querySelectorAll(".whitespace-nowrap")[1].textContent.replace(/\s+/g, ' ').trim(),
                             }
                         }
+
+                        return;
                     });
                 });
 
