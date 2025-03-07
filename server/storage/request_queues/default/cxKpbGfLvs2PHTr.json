@@ -1,9 +1,0 @@
-{
-	"id": "cxKpbGfLvs2PHTr",
-	"json": "{\"id\":\"cxKpbGfLvs2PHTr\",\"url\":\"https://www.upwork.com/nx/search/jobs/?from_recent_search=true&q=webdeveloper\",\"loadedUrl\":\"https://www.upwork.com/nx/search/jobs/?from_recent_search=true&q=webdeveloper\",\"uniqueKey\":\"https://www.upwork.com/nx/search/jobs?from_recent_search=true&q=webdeveloper\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"__crawlee\":{\"state\":4}},\"handledAt\":\"2025-03-06T12:22:56.575Z\"}",
-	"method": "GET",
-	"orderNo": null,
-	"retryCount": 0,
-	"uniqueKey": "https://www.upwork.com/nx/search/jobs?from_recent_search=true&q=webdeveloper",
-	"url": "https://www.upwork.com/nx/search/jobs/?from_recent_search=true&q=webdeveloper"
-}
