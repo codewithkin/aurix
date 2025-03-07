@@ -26,9 +26,9 @@ export default async function RedditScraper() {
                         if(el.textContent.toLowerCase().includes("[hiring]")) {
                             return {
                                 platform: "reddit",
-                                title: el.textContent.replace(/\s+/g, ' ').trim(),
-                                description: "",
-                                time: ""
+                                title: el.querySelector(".text-neutral-content-strong").textContent.replace(/\s+/g, ' ').trim(),
+                                description: el.querySelector(".feed-card-text-preview").textContent.replace(/\s+/g, ' ').trim(),
+                                date: el.querySelectorAll(".whitespace-nowrap")[1].textContent.replace(/\s+/g, ' ').trim(),
                             }
                         }
                     });
