@@ -42,10 +42,18 @@ function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
     },
   });
 
+  // const handleFilterJobs = () {
+  //   se
+  // }
+
   // Filter the jobs based on the selected platform(s)
   // const filteredJobs = jobs.filter((job: any) => {
   //   return job.platform === "upwork" || job.platform === "reddit";
   // });
+
+  const filteredJobs = (jobs ?? []).filter((job: any) => {
+    return platform === "All" || job.platform.toLowerCase() === platform.toLowerCase();
+  });
 
   return (
     <article className="flex gap-8 justify-center w-full p-8">
@@ -108,49 +116,48 @@ function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
         ) : (
           <>
             <h3 className="text-xl">{jobs.length || 0} Results</h3>
-            <Search />
+            {/* <Search /> */}
 
             {/* Jobs Cards */}
-            <article className="grid md:grid-cols-2 gap-4 my-4">
-              {jobs?.map(
-                (job: any, index: number) =>
-                  job && (
-                    <Card key={index}>
-                      <CardContent>
-                        <CardHeader>
-                          {/* Upwork indicator */}
-                          <article
-                            className={` ${job.platform === "reddit" ? "text-red-600" : "text-green-600"} flex gap-4 items-center  font-semibold`}
-                          >
-                            <Image
-                              alt="Upwork logo"
-                              src={`/logos/${job.platform}.png`}
-                              width={28}
-                              height={28}
-                            />
-                            <h2 className="capitalize">{job.platform}</h2>
-                          </article>
-                          <Badge
-                            variant="default"
-                            className="bg-purple-600 text-white font-semibold w-fit text-xs rounded-full"
-                          >
-                            {job.date}
-                          </Badge>
-                          <CardTitle className="capitalize text-xl font-semibold">
-                            {job.title}
-                          </CardTitle>
-                        </CardHeader>
+            {filteredJobs?.map((job: any, index: number) => (
+  job && (
+    <Card key={index}>
+      <CardContent>
+        <CardHeader>
+          <article
+            className={`${
+              job.platform === "reddit" ? "text-red-600" : "text-green-600"
+            } flex gap-4 items-center font-semibold`}
+          >
+            <Image
+              alt={`${job.platform} logo`}
+              src={`/logos/${job.platform}.png`}
+              width={28}
+              height={28}
+            />
+            <h2 className="capitalize">{job.platform}</h2>
+          </article>
+          <Badge
+            variant="default"
+            className="bg-purple-600 text-white font-semibold w-fit text-xs rounded-full"
+          >
+            {job.date}
+          </Badge>
+          <CardTitle className="capitalize text-xl font-semibold">
+            {job.title}
+          </CardTitle>
+        </CardHeader>
 
-                        <CardFooter>
-                          <p className="text-slate-600 text-sm">
-                            {job.description.slice(0, 500).concat("...")}
-                          </p>
-                        </CardFooter>
-                      </CardContent>
-                    </Card>
-                  ),
-              )}
-            </article>
+        <CardFooter>
+          <p className="text-slate-600 text-sm">
+            {job.description.slice(0, 500).concat("...")}
+          </p>
+        </CardFooter>
+      </CardContent>
+    </Card>
+  )
+))}
+
           </>
         )}
       </main>
