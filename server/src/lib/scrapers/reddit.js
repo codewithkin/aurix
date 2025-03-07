@@ -35,6 +35,8 @@ export default async function RedditScraper() {
                 results.push(...gigs);
             } catch (e) {
                 console.error("REDDIT CRAWLER FAILED:", e);
+            } finally {
+                await page.close()
             }
         },
     });

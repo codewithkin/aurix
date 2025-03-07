@@ -29,6 +29,8 @@ export default async function UpworkScraper(term = "webdeveloper") {
                 results.push(...jobs);
             } catch (e) {
                 console.error("UPWORK CRAWLER FAILED:", e);
+            } finally {
+                await page.close()
             }
         },
     });
