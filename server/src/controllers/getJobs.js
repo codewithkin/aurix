@@ -1,30 +1,25 @@
 import RedditScraper from "../lib/scrapers/reddit.js";
 import UpworkScraper from "../lib/scrapers/upwork.js";
 
-export default async function GetJobs (req, res) {
+export default async function GetJobs(req, res) {
     try {
-        // Get the user's search query (if any);
-        const {q} = req.query;
+        const { q } = req.query;
         const jobs = [];
 
-        const redditJobs = await RedditScraper();
-        const upworkJobs = await UpworkScraper();
+        const [redditJobs, upworkJobs] = await Promise.all([
+            RedditScraper(),
+            UpworkScraper(q || "webdeveloper"),
+        ]);
 
-        for (let job of [...redditJobs, ...upworkJobs]) {
-            if (q) {
-                if (job.title.toLowerCase().includes(q.toLowerCase())) {
-                    jobs.push(job);
-                }
-            } else {
-                jobs.push(job);
-            }
-        }
+        const allJobs = [...redditJobs, ...upworkJobs];
 
-        return res.json(jobs);
+        const filteredJobs = q
+            ? allJobs.filter((job) => job.title.toLowerCase().includes(q.toLowerCase()))
+            : allJobs;
+
+        return res.json(filteredJobs);
     } catch (e) {
-        console.log("An error occured while fetching jobs: ", e);
-        res.status(500).json({
-            message: "An error occured, check the server logs for more details"
-        })
+        console.error("An error occurred while fetching jobs:", e);
+        res.status(500).json({ message: "An error occurred, check the server logs for details" });
     }
 }
