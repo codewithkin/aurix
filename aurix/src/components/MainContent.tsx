@@ -105,9 +105,9 @@ function MainContent({jobs, fetching} : {jobs: any, fetching: boolean}) {
                     <CardContent>
                       <CardHeader>
                         {/* Upwork indicator */}
-                        <article className="flex gap-4 items-center text-green-600 font-semibold">
-                          <Image alt="Upwork logo" src="/logos/upwork.png" width={28} height={28} />
-                          <h2>Upwork</h2>
+                        <article className={` ${job.platform === "reddit" ? "text-red-600" : "text-green-600"} flex gap-4 items-center  font-semibold`}>
+                          <Image alt="Upwork logo" src={`/logos/${job.platform}.png`} width={28} height={28} />
+                          <h2 className="capitalize">{job.platform}</h2>
                         </article>
                         <Badge variant="default" className="bg-purple-600 text-white font-semibold w-fit text-xs rounded-full">{job.date}</Badge>
                         <CardTitle className="capitalize text-xl font-semibold">{job.title}</CardTitle>
