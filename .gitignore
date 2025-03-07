@@ -60,3 +60,5 @@ cypress/screenshots/
 
 # Ignore Git hooks if using Husky
 .husky/_/
+
+.next
