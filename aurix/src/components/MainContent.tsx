@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Search from "./main/Search";
 import { Button } from "./ui/button";
 import { Label } from "./ui/label";
@@ -25,7 +25,7 @@ import Image from "next/image";
 
 function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
   const [query, setQuery] = useState("");
-  const [platform, setPlatform] = useState("");
+  const [platform, setPlatform] = useState("All");
 
   const {
     mutate: search,
@@ -43,11 +43,9 @@ function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
   });
 
   // Filter the jobs based on the selected platform(s)
-  const filteredJobs = jobs.filter((job: any) => {
-    return job.platform === "upwork" || job.platform === "reddit";
-  });
-
-  console.log("Platform: ", platform);
+  // const filteredJobs = jobs.filter((job: any) => {
+  //   return job.platform === "upwork" || job.platform === "reddit";
+  // });
 
   return (
     <article className="flex gap-8 justify-center w-full p-8">
@@ -77,7 +75,7 @@ function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
               <Slider defaultValue={[0]} max={5000} step={10} />
             </article> */}
 
-            <RadioGroup onChange={setPlatform} defaultValue="All">
+            <RadioGroup defaultValue="All" onValueChange={setPlatform}>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="All" id="r1" />
                 <Label htmlFor="r1">All</Label>
