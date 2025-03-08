@@ -1,6 +1,7 @@
 import { PlaywrightCrawler, RequestQueue } from "crawlee";
 
-const requestQueue = await RequestQueue.open(); // Explicitly create a request queue
+const requestQueue = await RequestQueue.open(); // Centralized queue
+const results = []; // Store results in an array
 
 const crawler = new PlaywrightCrawler({
     requestQueue,
@@ -15,9 +16,11 @@ const crawler = new PlaywrightCrawler({
         try {
             console.log(`Crawling: ${request.url}`);
 
+            let scrapedJobs = [];
+
             if (request.userData.platform === "reddit") {
                 await page.waitForSelector(".w-full");
-                const gigs = await page.$$eval(".w-full", (els) =>
+                scrapedJobs = await page.$$eval(".w-full", (els) =>
                     els
                         .map((el) => {
                             if (el.textContent.toLowerCase().includes("[hiring]")) {
@@ -31,12 +34,11 @@ const crawler = new PlaywrightCrawler({
                         })
                         .filter(Boolean)
                 );
-                requestQueue.results.push(...gigs);
             }
 
             if (request.userData.platform === "upwork") {
                 await page.waitForSelector(".job-tile");
-                const jobs = await page.$$eval(".job-tile", (els) =>
+                scrapedJobs = await page.$$eval(".job-tile", (els) =>
                     els.map((el) => ({
                         platform: "upwork",
                         title: el.querySelector(".job-tile-title")?.textContent?.trim() || "No title",
@@ -44,8 +46,10 @@ const crawler = new PlaywrightCrawler({
                         date: el.querySelector(".text-light")?.textContent?.trim() || "No date",
                     }))
                 );
-                requestQueue.results.push(...jobs);
             }
+
+            // Store results globally
+            results.push(...scrapedJobs);
         } catch (error) {
             console.error(`Error while crawling ${request.url}:`, error);
         } finally {
@@ -54,5 +58,4 @@ const crawler = new PlaywrightCrawler({
     },
 });
 
-export default crawler;
-export { requestQueue };
+export { crawler, requestQueue, results };
