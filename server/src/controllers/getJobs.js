@@ -5,6 +5,8 @@ export default async function GetJobs (req, res) {
         // Get the search query (if any)
         const {query} = req.query;
 
+        console.log("LOG: Search query: ", query);
+
         const requestsWithNoQuery = [
             {
                 url: "https://www.reddit.com/r/forhire/",
@@ -37,6 +39,8 @@ export default async function GetJobs (req, res) {
 
         // Conditionally add requests depending on whether or not a query has been given
         const requests = query ? requestsWithQuery : requestsWithNoQuery
+
+        console.log("LOG: Requests: ", requests);
 
         // Add URLs to request queue
         for (const request of requests) {
