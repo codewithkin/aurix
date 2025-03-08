@@ -42,15 +42,6 @@ function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
     },
   });
 
-  // const handleFilterJobs = () {
-  //   se
-  // }
-
-  // Filter the jobs based on the selected platform(s)
-  // const filteredJobs = jobs.filter((job: any) => {
-  //   return job.platform === "upwork" || job.platform === "reddit";
-  // });
-
   const filteredJobs = (jobs ?? []).filter((job: any) => {
     return (
       platform === "All" ||
