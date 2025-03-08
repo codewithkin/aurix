@@ -10,6 +10,7 @@ const crawler = new PlaywrightCrawler({
         launchOptions: {
             headless: true,
             args: ["--no-sandbox", "--disable-setuid-sandbox"],
+            cacheResponse: false,
         },
     },
     requestHandler: async ({ request, page }) => {
