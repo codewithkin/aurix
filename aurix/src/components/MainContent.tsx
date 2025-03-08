@@ -118,7 +118,7 @@ function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
           </article>
         ) : (
           <>
-            <h3 className="text-2xl font-semibold">{jobs.length || 0} Results</h3>
+            <h3 className="text-2xl font-semibold">{filteredJobs.length || 0} Results</h3>
             {/* <Search /> */}
 
             {/* Jobs Cards */}
