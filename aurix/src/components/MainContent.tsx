@@ -22,6 +22,7 @@ import {
 import { Badge } from "./ui/badge";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import Image from "next/image";
+import { toast } from "sonner";
 
 function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
   const [query, setQuery] = useState("");
@@ -40,6 +41,13 @@ function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
 
       return res.data;
     },
+    onSuccess: (data) => {
+      console.log("SEARCH COMPLETE: ", data);
+    },
+    onError: (error) => {
+      console.log("SEARCH ERROR: ", error);
+      toast.error("An error occured while searching, please try again later");
+    }
   });
 
   const filteredJobs = (jobs ?? []).filter((job: any) => {
