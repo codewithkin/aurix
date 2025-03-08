@@ -33,7 +33,7 @@ function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
     data: response,
   } = useMutation({
     mutationKey: ["search"],
-    mutationFn: async () => {
+    mutationFn: async (query: string) => {
       const res = (await axios.get(
         `${urls.backendUrl}/api/jobs?q=${query}`,
       )) as { data: { jobs?: any[] } };
@@ -119,7 +119,7 @@ function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
         ) : (
           <>
             <h3 className="text-2xl font-semibold">{filteredJobs.length || 0} Results</h3>
-            {/* <Search /> */}
+            <Search searchFn={search} searching={loading} />
 
             {/* Jobs Cards */}
             <article className="grid md:grid-cols-2 gap-4 my-4">
