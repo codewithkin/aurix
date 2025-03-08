@@ -22,6 +22,7 @@ import {
 import { Badge } from "./ui/badge";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import Image from "next/image";
+import { toast } from "sonner";
 
 function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
   const [query, setQuery] = useState("");
@@ -49,6 +50,9 @@ function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
       // Update the searched jobs state with the new results
       setSearchedJobs(data || []);
     },
+    onError: (error) => {
+      toast.error("An error occured while searching for jobs, please try again later");
+    }
   });
 
   // Effect to update filteredJobs whenever searchedJobs or platform changes
