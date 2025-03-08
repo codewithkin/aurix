@@ -2,7 +2,6 @@ import { PlaywrightCrawler, RequestQueue } from "crawlee";
 
 const requestQueue = await RequestQueue.open(); // Centralized queue
 const results = []; // Store results in an array
-let isCrawlerRunning = false; // Track if crawler is running
 
 const crawler = new PlaywrightCrawler({
     requestQueue,
@@ -59,4 +58,4 @@ const crawler = new PlaywrightCrawler({
     },
 });
 
-export { crawler, requestQueue, results, isCrawlerRunning };
+export { crawler, requestQueue, results };
