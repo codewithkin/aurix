@@ -1,29 +1,21 @@
-import RedditScraper from "../lib/scrapers/reddit.js";
-import UpworkScraper from "../lib/scrapers/upwork.js";
-import fs from "fs";
+import { RedditScraper, UpworkScraper } from "../lib/scrapers";
+import crawler, { requestQueue } from "../lib/crawler.js";
 
 export default async function GetJobs(req, res) {
     try {
         const { q } = req.query;
-        const jobs = [];
 
-        // Check if the storage folder exists
-        if(fs.existsSync("./storage")) {
-            // Delete the storage folder
-            console.log("Storage folder exists, deleting....")
-            fs.rmdirSync("./storage", { recursive: true });
-        }
+        // Queue all requests (Reddit & Upwork)
+        await Promise.all([RedditScraper(), UpworkScraper(q)]);
 
-        const [redditJobs, upworkJobs] = await Promise.all([
-            RedditScraper(),
-            UpworkScraper(q || "webdeveloper"),
-        ]);
+        // Run the crawler on all queued jobs
+        await crawler.run();
 
-        const allJobs = [...redditJobs, ...upworkJobs];
-
+        // Retrieve results after crawling
+        const jobs = requestQueue.results || [];
         const filteredJobs = q
-            ? allJobs.filter((job) => job.title.toLowerCase().includes(q.toLowerCase()))
-            : allJobs;
+            ? jobs.filter((job) => job.title.toLowerCase().includes(q.toLowerCase()))
+            : jobs;
 
         return res.json(filteredJobs);
     } catch (e) {
