@@ -2,6 +2,8 @@ import { crawler, requestQueue, results } from "../lib/crawler.js";
 
 export default async function GetJobs (req, res) {
     try {
+        // TODO: Make the crawlers work for searches
+
         // Get the search query (if any)
         const {query} = req.query;
 
