@@ -35,7 +35,7 @@ function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
     mutationKey: ["search"],
     mutationFn: async (query: string) => {
       const res = (await axios.get(
-        `${urls.backendUrl}/api/jobs?q=${query}`,
+        `${urls.backendUrl}/api/jobs?query=${query}`,
       )) as { data: { jobs?: any[] } };
 
       return res.data;
