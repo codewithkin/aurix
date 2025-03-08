@@ -1,3 +1,4 @@
+import { toast } from "sonner";
 import { urls } from "../urls";
 import axios from "axios";
 
@@ -14,5 +15,7 @@ export default async function getJobs(query?: string) {
     return res.data;
   } catch (e) {
     console.log("An error occured while fetching jobs: ", e);
+
+    toast.error("An error occured while fetching jobs, please try again later");
   }
 }
