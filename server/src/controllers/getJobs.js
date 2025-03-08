@@ -3,7 +3,7 @@ import { crawler, requestQueue, results } from "../lib/crawler.js";
 export default async function GetJobs (req, res) {
     try {
         // Get the search query (if any)
-        const {query} = req.body;
+        const {query} = req.query;
 
         const requestsWithNoQuery = [
             {
@@ -53,6 +53,7 @@ export default async function GetJobs (req, res) {
 
         res.status(200).json(results);
     } catch (error) {
+        console.log("An error occured while fetching jobs: ", error);
         res.status(500).json({ message: "Error occurred while fetching jobs", error: error.message });
     }
 };
