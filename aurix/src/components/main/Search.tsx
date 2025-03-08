@@ -6,7 +6,11 @@ function Search({ searchFn, searching }: {  searchFn: any; searching: boolean })
   const [query, setQuery] = useState("");
 
   return (
-    <form onSubmit={() => searchFn(query)} className="flex gap-2 items-center w-full">
+    <form onSubmit={(e) => {
+      e.preventDefault();
+
+      searchFn(query)
+    }} className="flex gap-2 items-center w-full">
       <Input
         className="py-6 px-4 focus-visible:ring-sky-400 focus-visible:ring-1 focus-visible:outline-none focus-visible:border-0 rounded-lg"
         type="search"
