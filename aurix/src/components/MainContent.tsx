@@ -22,13 +22,10 @@ import {
 import { Badge } from "./ui/badge";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import Image from "next/image";
-import { toast } from "sonner";
 
 function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
   const [query, setQuery] = useState("");
   const [platform, setPlatform] = useState("All");
-  const [searchedJobs, setSearchedJobs] = useState(jobs); // State for storing search results
-  const [filteredJobs, setFilteredJobs] = useState(jobs); // State for filtered jobs
 
   const {
     mutate: search,
@@ -43,27 +40,14 @@ function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
 
       return res.data;
     },
-
-    onSuccess: (data) => {
-      console.log("SEARCH COMPLETE: ", data);
-
-      // Update the searched jobs state with the new results
-      setSearchedJobs(data || []);
-    },
-    onError: (error) => {
-      toast.error("An error occured while searching for jobs, please try again later");
-    }
   });
 
-  // Effect to update filteredJobs whenever searchedJobs or platform changes
-  useEffect(() => {
-    const filtered = (searchedJobs ?? []).filter((job: any) => {
-      return (
-        platform === "All" || job.platform.toLowerCase() === platform.toLowerCase()
-      );
-    });
-    setFilteredJobs(filtered);
-  }, [searchedJobs, platform]);  // Runs when searchedJobs or platform changes
+  const filteredJobs = (jobs ?? []).filter((job: any) => {
+    return (
+      platform === "All" ||
+      job.platform.toLowerCase() === platform.toLowerCase()
+    );
+  });
 
   return (
     <article className="flex gap-8 justify-center w-full p-8">
@@ -83,6 +67,16 @@ function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
           </article>
 
           <article className="flex flex-col gap-8 justify-center p-4">
+            {/* <article className="flex flex-col gap-2">
+              <Label>Date Posted</Label>
+              <Input type="date" />
+            </article>
+
+            <article className="flex flex-col gap-2">
+              <Label>Price Range</Label>
+              <Slider defaultValue={[0]} max={5000} step={10} />
+            </article> */}
+
             <RadioGroup defaultValue="All" onValueChange={setPlatform}>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="All" id="r1" />
