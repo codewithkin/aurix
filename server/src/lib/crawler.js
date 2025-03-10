@@ -30,9 +30,8 @@ const crawler = new PlaywrightCrawler({
                                     title: el.querySelector(".text-neutral-content-strong")?.textContent?.trim() || "No title",
                                     description: el.querySelector(".feed-card-text-preview")?.textContent?.trim() || "No description",
                                     date: el.querySelectorAll(".whitespace-nowrap")?.[1]?.textContent?.trim() || "No date",
-                                    url: el.querySelector("a.absolute.inset-0")?.href 
-                                        ? `https://www.reddit.com${el.querySelector("a.absolute.inset-0").getAttribute("href")}`
-                                        : "No URL",
+                                    url: `https://www.reddit.com${el.querySelector("a.absolute")?.getAttribute("href") || ""}`,
+                                    username: el.closest("shreddit-post")?.getAttribute("author")?.replace("u/", "") || "No username",
                                 };
                             }
                         })
