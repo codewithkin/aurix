@@ -28,35 +28,31 @@ import Link from "next/link";
 function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
   const [query, setQuery] = useState("");
   const [platform, setPlatform] = useState("All");
+  const [searchResults, setSearchResults] = useState<any[]>([]);
 
   const {
     mutate: search,
     isPending: loading,
-    data: response,
   } = useMutation({
     mutationKey: ["search"],
     mutationFn: async (query: string) => {
-      const res = (await axios.get(
-        `${urls.backendUrl}/api/jobs?query=${query}`,
-      )) as { data: { jobs?: any[] } };
-
-      return res.data;
+      const res = await axios.get(`${urls.backendUrl}/api/jobs?query=${query}`);
+      return res.data.jobs;
     },
     onSuccess: (data) => {
       console.log("SEARCH COMPLETE: ", data);
+      setSearchResults(data); // Update state with search results
     },
     onError: (error) => {
-      console.log("SEARCH ERROR: ", error);
-      toast.error("An error occured while searching, please try again later");
+      console.error("SEARCH ERROR: ", error);
+      toast.error("An error occurred while searching, please try again later");
     },
   });
 
-  const filteredJobs = (jobs ?? []).filter((job: any) => {
-    return (
-      platform === "All" ||
-      job.platform.toLowerCase() === platform.toLowerCase()
-    );
-  });
+  // Use search results if available; otherwise, use original jobs
+  const filteredJobs = (searchResults.length ? searchResults : jobs ?? []).filter(
+    (job: any) => platform === "All" || job.platform.toLowerCase() === platform.toLowerCase()
+  );
 
   return (
     <article className="flex gap-8 justify-center w-full p-8">
@@ -65,27 +61,17 @@ function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
         <article className="rounded-2xl border border-gray-200">
           <article className="border-b border-gray-200 p-4 flex justify-between items-center">
             <h2 className="font-semibold">Filters</h2>
-
             <Button
               type="submit"
               variant="outline"
               className="text-purple-600 border-purple-600 hover:text-purple-400 hover:border-purple-400 hover:bg-white"
+              onClick={() => setSearchResults([])} // Clear search results
             >
               Clear Filters
             </Button>
           </article>
 
           <article className="flex flex-col gap-8 justify-center p-4">
-            {/* <article className="flex flex-col gap-2">
-              <Label>Date Posted</Label>
-              <Input type="date" />
-            </article>
-
-            <article className="flex flex-col gap-2">
-              <Label>Price Range</Label>
-              <Slider defaultValue={[0]} max={5000} step={10} />
-            </article> */}
-
             <RadioGroup defaultValue="All" onValueChange={setPlatform}>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="All" id="r1" />
@@ -118,82 +104,57 @@ function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
           </article>
         ) : (
           <>
-            <h3 className="text-2xl font-semibold">
-              {filteredJobs.length || 0} Results
-            </h3>
+            <h3 className="text-2xl font-semibold">{filteredJobs.length || 0} Results</h3>
             <Search searchFn={search} searching={loading} />
-
+            
             {/* Jobs Cards */}
             <article className="grid md:grid-cols-2 gap-4 my-4">
-              {filteredJobs?.map(
-                (job: any, index: number) =>
-                  job && (
-                    <Card key={index}>
-                      <CardContent>
-                        <CardHeader>
-                          <article
-                            className={`${
-                              job.platform === "reddit"
-                                ? "text-red-600"
-                                : "text-green-600"
-                            } flex gap-4 items-center font-semibold`}
-                          >
-                            <Image
-                              alt={`${job.platform} logo`}
-                              src={`/logos/${job.platform}.png`}
-                              width={28}
-                              height={28}
-                            />
-                            <h2 className="capitalize">{job.platform}</h2>
-                          </article>
-                          <Badge
-                            variant="default"
-                            className="bg-purple-600 text-white font-semibold w-fit text-xs rounded-full"
-                          >
-                            {job.date}
-                          </Badge>
-                          <CardTitle className="capitalize text-xl font-semibold">
-                            {job.title}
-                          </CardTitle>
-                        </CardHeader>
+              {filteredJobs?.map((job: any, index: number) => (
+                <Card key={index}>
+                  <CardContent>
+                    <CardHeader>
+                      <article
+                        className={`${
+                          job.platform === "reddit" ? "text-red-600" : "text-green-600"
+                        } flex gap-4 items-center font-semibold`}
+                      >
+                        <Image
+                          alt={`${job.platform} logo`}
+                          src={`/logos/${job.platform}.png`}
+                          width={28}
+                          height={28}
+                        />
+                        <h2 className="capitalize">{job.platform}</h2>
+                      </article>
+                      <Badge
+                        variant="default"
+                        className="bg-purple-600 text-white font-semibold w-fit text-xs rounded-full"
+                      >
+                        {job.date}
+                      </Badge>
+                      <CardTitle className="capitalize text-xl font-semibold">
+                        {job.title}
+                      </CardTitle>
+                    </CardHeader>
 
-                        <CardFooter className="flex flex-col gap-4 items-start">
-                          <p className="text-slate-600 text-sm">
-                            {job.description.slice(0, 500).concat("...")}
-                          </p>
+                    <CardFooter className="flex flex-col gap-4 items-start">
+                      <p className="text-slate-600 text-sm">
+                        {job.description.slice(0, 500).concat("...")}
+                      </p>
 
-                          {/* Actions btns */}
-                          <article className="flex gap-4 font-semibold">
-                            <Button asChild variant="default">
-                              <Link href={job.url}>
-                                View{" "}
-                                {job.platform === "upwork" ? "Gig" : "Post"} on{" "}
-                                <span className="capitalize">
-                                  {job.platform}
-                                </span>
-                              </Link>
-                            </Button>
-
-                            {/* Reddit "auto-contact btn" */}
-                            <Button
-                              variant="outline"
-                              className="text-red-500 border-red-500"
-                            >
-                              {/* Reddit icon */}
-                              <Image
-                                width={24}
-                                height={24}
-                                alt="Reddit icon"
-                                src="/logos/reddit.png"
-                              />
-                              Auto-Contact
-                            </Button>
-                          </article>
-                        </CardFooter>
-                      </CardContent>
-                    </Card>
-                  ),
-              )}
+                      {/* Actions btns */}
+                      <article className="flex gap-4 font-semibold">
+                        <Button asChild variant="default">
+                          <Link href={job.url}>
+                            View {job.platform === "upwork" ? "Gig" : "Post"} on{" "}
+                            <span className="capitalize">{job.platform}</span>
+                          </Link>
+                        </Button>
+                      </article>
+                    </CardFooter>
+                  </CardContent>
+                </Card>
+              ))}
             </article>
           </>
         )}
