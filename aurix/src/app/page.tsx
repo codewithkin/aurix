@@ -15,8 +15,6 @@ export default function Home() {
 
   console.log("Jobs: ", jobs);
 
-  throw new Error("Win")
-
   return (
     <>
       <Topbar />
