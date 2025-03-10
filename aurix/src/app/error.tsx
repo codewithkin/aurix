@@ -21,7 +21,7 @@ function ErrorPage({
         <Code size={18} />
         <p>{error.message}</p>
       </article>
-      <article className="flex md:flex-row flex-col gap-4 items-center justify-center w-full">
+      <article className="flex my-4 gap-4 items-center justify-center w-full">
         <Button
           onClick={reset}
           className="bg-purple-600 text-white font-semibold"
