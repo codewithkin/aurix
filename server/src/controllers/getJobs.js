@@ -19,7 +19,7 @@ export default async function GetJobs (req, res) {
                 userData: { platform: "reddit" },
             },
             {
-                url: "https://www.upwork.com/nx/search/jobs/?q=webdeveloper",
+                url: "https://www.upwork.com/nx/search/jobs/",
                 userData: { platform: "upwork" },
             }
         ]
