@@ -155,16 +155,16 @@ function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
                           </CardTitle>
                         </CardHeader>
 
-                        <CardFooter>
+                        <CardFooter className="flex flex-col gap-4 items-start">
                           <p className="text-slate-600 text-sm">
                             {job.description.slice(0, 500).concat("...")}
                           </p>
 
                           {/* Actions btns */}
-                          <article className="flex gap-4 items-center">
+                          <article className="flex gap-4 font-semibold">
                               <Button asChild variant="default">
                                 <Link href={job.url}>
-                                  View {job.platform === "upwork" ? "Gig" : "Post"}
+                                  View {job.platform === "upwork" ? "Gig" : "Post"} on <span className="capitalize">{job.platform}</span>
                                 </Link>
                               </Button>
                           </article>
