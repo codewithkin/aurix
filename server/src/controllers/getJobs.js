@@ -1,5 +1,5 @@
-import { RedditScraper } from "../lib/reddit.js";
-import { UpworkScraper } from "../lib/upwork.js";
+import { RedditScraper } from "../lib/scrapers/reddit.js";
+import { UpworkScraper } from "../lib/scrapers/upwork.js";
 
 export default async function GetJobs(req, res) {
     try {
@@ -18,7 +18,7 @@ export default async function GetJobs(req, res) {
 
         if (!query) {
             // Add default requests for Reddit and Upwork if no query
-            requests.push(...await RedditScraper());
+            requests.push(...await UpworkScraper());
             requests.push(...await UpworkScraper());
         } else {
             // Add requests for Reddit and Upwork with the query
