@@ -1,4 +1,5 @@
 import { crawler, requestQueue, results } from "../lib/crawler.js";
+import fs from "fs";
 
 export default async function GetJobs(req, res) {
     try {
@@ -43,6 +44,13 @@ export default async function GetJobs(req, res) {
             }
         ];
 
+        if(query) {
+            // Delete the storage folder to disable caching
+            fs.rmSync("../../storage", { recursive: true, force: true });
+
+            console.log("deleted storage folder")
+        }
+
         // Conditionally add requests depending on whether or not a query has been given
         const requests = query ? requestsWithQuery : requestsWithNoQuery;
 
@@ -60,8 +68,6 @@ export default async function GetJobs(req, res) {
         } else {
             console.log("Crawler is already running, new requests added.");
         }
-
-        console.log(`Search results ${query ? "with" : "without"} query: `, results);
 
         res.status(200).json(results);
     } catch (error) {
