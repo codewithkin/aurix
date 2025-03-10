@@ -1,13 +1,17 @@
 import { crawler, requestQueue, results } from "../lib/crawler.js";
 
-export default async function GetJobs (req, res) {
+export default async function GetJobs(req, res) {
     try {
-        // TODO: Make the crawlers work for searches
+        // Prevent caching
+        res.setHeader('Cache-Control', 'no-store');
 
         // Get the search query (if any)
-        const {query} = req.query;
+        const { query } = req.query;
 
         console.log("LOG: Search query: ", query);
+
+        // Clear previous results to avoid old data being included in new search results
+        results.length = 0;
 
         const requestsWithNoQuery = [
             {
@@ -22,7 +26,7 @@ export default async function GetJobs (req, res) {
                 url: "https://www.upwork.com/nx/search/jobs/",
                 userData: { platform: "upwork" },
             }
-        ]
+        ];
 
         const requestsWithQuery = [
             {
@@ -36,11 +40,11 @@ export default async function GetJobs (req, res) {
             {
                 url: `https://www.upwork.com/nx/search/jobs/?q=${query}`,
                 userData: { platform: "upwork" },
-            }  
-        ]
+            }
+        ];
 
         // Conditionally add requests depending on whether or not a query has been given
-        const requests = query ? requestsWithQuery : requestsWithNoQuery
+        const requests = query ? requestsWithQuery : requestsWithNoQuery;
 
         console.log("LOG: Requests: ", requests);
 
@@ -57,9 +61,11 @@ export default async function GetJobs (req, res) {
             console.log("Crawler is already running, new requests added.");
         }
 
+        console.log(`Search results ${query ? "with" : "without"} query: `, results);
+
         res.status(200).json(results);
     } catch (error) {
-        console.log("An error occured while fetching jobs: ", error);
+        console.log("An error occurred while fetching jobs: ", error);
         res.status(500).json({ message: "Error occurred while fetching jobs", error: error.message });
     }
-};
+}
