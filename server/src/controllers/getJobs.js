@@ -1,5 +1,5 @@
-import { crawler, requestQueue, results } from "../lib/crawler.js";
-import fs from "fs";
+import { RedditScraper } from "../lib/reddit.js";
+import { UpworkScraper } from "../lib/upwork.js";
 
 export default async function GetJobs(req, res) {
     try {
@@ -14,62 +14,21 @@ export default async function GetJobs(req, res) {
         // Clear previous results to avoid old data being included in new search results
         results.length = 0;
 
-        const requestsWithNoQuery = [
-            {
-                url: "https://www.reddit.com/r/forhire/",
-                userData: { platform: "reddit" },
-            },
-            {
-                url: "https://www.reddit.com/r/freelance_forhire/",
-                userData: { platform: "reddit" },
-            },
-            {
-                url: "https://www.upwork.com/nx/search/jobs/",
-                userData: { platform: "upwork" },
-            }
-        ];
+        const requests = [];
 
-        const requestsWithQuery = [
-            {
-                url: `https://www.reddit.com/r/forhire/search?q=${query}`,
-                userData: { platform: "reddit" },
-            },
-            {
-                url: `https://www.reddit.com/r/freelance_forhire/search?q=${query}`,
-                userData: { platform: "reddit" },
-            },
-            {
-                url: `https://www.upwork.com/nx/search/jobs/?q=${query}`,
-                userData: { platform: "upwork" },
-            }
-        ];
-
-        if(query) {
-            // Delete the storage folder to disable caching
-            fs.rmSync("../../storage", { recursive: true, force: true });
-
-            console.log("deleted storage folder")
+        if (!query) {
+            // Add default requests for Reddit and Upwork if no query
+            requests.push(...await RedditScraper());
+            requests.push(...await UpworkScraper());
+        } else {
+            // Add requests for Reddit and Upwork with the query
+            requests.push(...await RedditScraper(query));
+            requests.push(...await UpworkScraper(query));
         }
-
-        // Conditionally add requests depending on whether or not a query has been given
-        const requests = query ? requestsWithQuery : requestsWithNoQuery;
 
         console.log("LOG: Requests: ", requests);
 
-        // Add URLs to request queue
-        for (const request of requests) {
-            await requestQueue.addRequest(request);
-        }
-
-        // Run the crawler only if it's not already running
-        if (!crawler.isRunning) {
-            console.log("Starting centralized crawler...");
-            await crawler.run();
-        } else {
-            console.log("Crawler is already running, new requests added.");
-        }
-
-        res.status(200).json(results);
+        res.status(200).json(requests);
     } catch (error) {
         console.log("An error occurred while fetching jobs: ", error);
         res.status(500).json({ message: "Error occurred while fetching jobs", error: error.message });
