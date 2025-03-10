@@ -2,13 +2,10 @@ import { useEffect, useState } from "react";
 import Search from "./main/Search";
 import { Button } from "./ui/button";
 import { Label } from "./ui/label";
-import { Calendar } from "./ui/calendar";
-import { Checkbox } from "./ui/checkbox";
-import { Slider } from "./ui/slider";
-import { Input } from "./ui/input";
-import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
-import { urls } from "@/lib/urls";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import Image from "next/image";
+import { toast } from "sonner";
+import Link from "next/link";
 import { Loader, Loader2 } from "lucide-react";
 import { Skeleton } from "./ui/skeleton";
 import {
@@ -19,14 +16,14 @@ import {
   CardTitle,
 } from "./ui/card";
 import { Badge } from "./ui/badge";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import Image from "next/image";
-import { toast } from "sonner";
-import Link from "next/link";
+import axios from "axios";
+import { useMutation } from "@tanstack/react-query";
+import { urls } from "@/lib/urls";
 
 function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
   const [query, setQuery] = useState("");
   const [platform, setPlatform] = useState("All");
+  const [filteredJobs, setFilteredJobs] = useState(jobs ?? []);
 
   const {
     mutate: search,
@@ -43,6 +40,7 @@ function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
     },
     onSuccess: (data) => {
       console.log("SEARCH COMPLETE: ", data);
+      setFilteredJobs(data.jobs || []); // Update the filtered jobs state
     },
     onError: (error) => {
       console.log("SEARCH ERROR: ", error);
@@ -50,13 +48,16 @@ function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
     },
   });
 
-  // Only filter jobs if 'jobs' is defined and not null
-  const filteredJobs = (jobs ?? []).filter((job: any) => {
-    return (
-      platform === "All" ||
-      job.platform.toLowerCase() === platform.toLowerCase()
-    );
-  });
+  useEffect(() => {
+    // Filter jobs based on the selected platform
+    const newFilteredJobs = (jobs ?? []).filter((job: any) => {
+      return (
+        platform === "All" ||
+        job.platform.toLowerCase() === platform.toLowerCase()
+      );
+    });
+    setFilteredJobs(newFilteredJobs); // Set filtered jobs based on platform
+  }, [platform, jobs]); // Re-run when platform or jobs change
 
   return (
     <article className="flex gap-8 justify-center w-full p-8">
@@ -70,6 +71,7 @@ function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
               type="submit"
               variant="outline"
               className="text-purple-600 border-purple-600 hover:text-purple-400 hover:border-purple-400 hover:bg-white"
+              onClick={() => setPlatform("All")} // Clear filter
             >
               Clear Filters
             </Button>
