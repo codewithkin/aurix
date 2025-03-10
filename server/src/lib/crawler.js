@@ -42,12 +42,18 @@ const crawler = new PlaywrightCrawler({
             if (request.userData.platform === "upwork") {
                 await page.waitForSelector(".job-tile");
                 scrapedJobs = await page.$$eval(".job-tile", (els) =>
-                    els.map((el) => ({
-                        platform: "upwork",
-                        title: el.querySelector(".job-tile-title")?.textContent?.trim() || "No title",
-                        description: el.querySelector(".text-body-sm")?.textContent?.trim() || "No description",
-                        date: el.querySelector(".text-light")?.textContent?.trim() || "No date",
-                    }))
+                    els.map((el) => {
+                        const relativeUrl = el.querySelector(".air3-link")?.getAttribute("href") || "";
+                        const absoluteUrl = relativeUrl.startsWith("/") ? `https://www.upwork.com${relativeUrl}` : relativeUrl;
+            
+                        return {
+                            platform: "upwork",
+                            url: absoluteUrl,
+                            title: el.querySelector(".job-tile-title")?.textContent?.trim() || "No title",
+                            description: el.querySelector(".text-body-sm")?.textContent?.trim() || "No description",
+                            date: el.querySelector(".text-light")?.textContent?.trim() || "No date",
+                        };
+                    })
                 );
             }
 
