@@ -33,7 +33,7 @@ function Search({
         className="bg-sky-400 text-white p-6"
         disabled={searching} // Optionally disable button while searching
       >
-        {searching ? 'Searching...' : 'Find Gigs'}
+        {searching ? "Searching..." : "Find Gigs"}
       </Button>
     </form>
   );

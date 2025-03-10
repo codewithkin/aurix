@@ -1,5 +1,6 @@
 import { RedditScraper } from "../lib/scrapers/reddit.js";
 import { UpworkScraper } from "../lib/scrapers/upwork.js";
+import { results } from "../lib/crawler.js";
 
 export default async function GetJobs(req, res) {
     try {

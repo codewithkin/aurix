@@ -1,5 +1,28 @@
 {
-  "node": {},
+  "node": {
+    "0096173dc5c3a5c3fd79195a06cb9612e6ee561de2": {
+      "workers": {
+        "app/auth/page": {
+          "moduleId": "[project]/.next-internal/server/app/auth/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/lib/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (ecmascript)",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/auth/page": "rsc"
+      }
+    },
+    "002beba60e39ce7c1476684d426cd22997e1890f7f": {
+      "workers": {
+        "app/auth/page": {
+          "moduleId": "[project]/.next-internal/server/app/auth/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/lib/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (ecmascript)",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/auth/page": "rsc"
+      }
+    }
+  },
   "edge": {},
   "encryptionKey": "y+fRCZOJr98gZbs5oPMw8XQxEThyZBTU/SguggkU7z8="
 }
