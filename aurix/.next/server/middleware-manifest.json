@@ -6,9 +6,10 @@
         "server/edge/chunks/_360fdf._.js",
         "server/edge/chunks/node_modules_@auth_core_cc4d8e._.js",
         "server/edge/chunks/node_modules_jose_dist_browser_fc0601._.js",
-        "server/edge/chunks/node_modules_eb4da9._.js",
-        "server/edge/chunks/[root of the server]__45e674._.js",
-        "server/edge/chunks/edge-wrapper_0617d0.js"
+        "server/edge/chunks/node_modules_@prisma_client_7fdf0f._.js",
+        "server/edge/chunks/node_modules_a767bc._.js",
+        "server/edge/chunks/[root of the server]__e0c914._.js",
+        "server/edge/chunks/edge-wrapper_ecd8c2.js"
       ],
       "name": "middleware",
       "page": "/",
