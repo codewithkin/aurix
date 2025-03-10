@@ -23,6 +23,7 @@ import { Badge } from "./ui/badge";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import Image from "next/image";
 import { toast } from "sonner";
+import Link from "next/link";
 
 function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
   const [query, setQuery] = useState("");
@@ -158,6 +159,15 @@ function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
                           <p className="text-slate-600 text-sm">
                             {job.description.slice(0, 500).concat("...")}
                           </p>
+
+                          {/* Actions btns */}
+                          <article className="flex gap-4 items-center">
+                              <Button asChild variant="default">
+                                <Link href={job.url}>
+                                  View {job.platform === "upwork" ? "Gig" : "Post"}
+                                </Link>
+                              </Button>
+                          </article>
                         </CardFooter>
                       </CardContent>
                     </Card>
