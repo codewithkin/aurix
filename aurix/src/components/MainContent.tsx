@@ -48,7 +48,7 @@ function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
     onError: (error) => {
       console.log("SEARCH ERROR: ", error);
       toast.error("An error occured while searching, please try again later");
-    }
+    },
   });
 
   const filteredJobs = (jobs ?? []).filter((job: any) => {
@@ -118,7 +118,9 @@ function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
           </article>
         ) : (
           <>
-            <h3 className="text-2xl font-semibold">{filteredJobs.length || 0} Results</h3>
+            <h3 className="text-2xl font-semibold">
+              {filteredJobs.length || 0} Results
+            </h3>
             <Search searchFn={search} searching={loading} />
 
             {/* Jobs Cards */}
@@ -162,11 +164,30 @@ function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
 
                           {/* Actions btns */}
                           <article className="flex gap-4 font-semibold">
-                              <Button asChild variant="default">
-                                <Link href={job.url}>
-                                  View {job.platform === "upwork" ? "Gig" : "Post"} on <span className="capitalize">{job.platform}</span>
-                                </Link>
-                              </Button>
+                            <Button asChild variant="default">
+                              <Link href={job.url}>
+                                View{" "}
+                                {job.platform === "upwork" ? "Gig" : "Post"} on{" "}
+                                <span className="capitalize">
+                                  {job.platform}
+                                </span>
+                              </Link>
+                            </Button>
+
+                            {/* Reddit "auto-contact btn" */}
+                            <Button
+                              variant="outline"
+                              className="text-red-500 border-red-500"
+                            >
+                              {/* Reddit icon */}
+                              <Image
+                                width={24}
+                                height={24}
+                                alt="Reddit icon"
+                                src="/logos/reddit.png"
+                              />
+                              Auto-Contact
+                            </Button>
                           </article>
                         </CardFooter>
                       </CardContent>
