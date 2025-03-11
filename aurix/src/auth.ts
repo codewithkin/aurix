@@ -1,13 +1,10 @@
-import authConfig from "./auth.config"
- 
-import { PrismaClient } from "@prisma/client"
-import { PrismaAdapter } from "@auth/prisma-adapter"
 import NextAuth from "next-auth"
- 
-export const prisma = new PrismaClient()
+import { PrismaAdapter } from "@auth/prisma-adapter"
+import { prisma } from "./prisma"
+import Resend from "next-auth/providers/resend"
+import Reddit from "next-auth/providers/reddit"
  
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prisma),
-  session: { strategy: "jwt" },
-  ...authConfig,
+  providers: [Resend, Reddit],
 })
