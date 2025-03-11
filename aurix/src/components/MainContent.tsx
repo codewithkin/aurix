@@ -17,10 +17,18 @@ import {
 } from "./ui/card";
 import { Badge } from "./ui/badge";
 import axios from "axios";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { urls } from "@/lib/urls";
+import getJobs from "@/lib/queries/getJobs";
 
-function MainContent({ jobs, fetching }: { jobs: any; fetching: boolean }) {
+function MainContent() {
+  const { data: jobs, isPending: fetching } = useQuery({
+    queryKey: ["getJobs"],
+    queryFn: async () => await getJobs(),
+  });
+
+  console.log("Jobs: ", jobs);
+
   const [query, setQuery] = useState("");
   const [platform, setPlatform] = useState("All");
   const [filteredJobs, setFilteredJobs] = useState(jobs ?? []);
