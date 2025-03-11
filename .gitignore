@@ -11,6 +11,8 @@ build/
 .cache/
 .tmp/
 
+/.next
+
 # Ignore lockfiles except for a root one (if using a single lockfile strategy)
 **/package-lock.json
 **/yarn.lock
