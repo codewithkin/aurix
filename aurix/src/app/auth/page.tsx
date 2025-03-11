@@ -6,6 +6,7 @@ import { emailSignIn, redditSignIn } from "@/lib/actions";
 import Image from "next/image";
 
 function page() {
+
   return (
     <section className="bg-gradient-to-tr from-sky-200 to-blue-500 min-h-screen min-w-screen flex flex-col justify-center items-center">
       {/* Form */}
