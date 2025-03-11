@@ -1,8 +1,18 @@
+import { auth } from "@/auth";
 import MainContent from "@/components/MainContent";
 import Topbar from "@/components/shared/Topbar";
+import { redirect } from "next/navigation";
 
-export default function Home() {
+export default async function Home() {
   // Make sure the user is logged in
+  const session = await auth();
+
+  console.log(session);
+
+  if(!session) {
+    // Redirect to the auth page
+    return redirect("/auth");
+  }
 
   return (
     <>
