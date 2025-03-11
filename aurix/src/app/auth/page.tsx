@@ -1,5 +1,7 @@
-import { signIn } from "@/auth";
+"use client";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { emailSignIn, redditSignIn } from "@/lib/actions";
 import Image from "next/image";
 
@@ -15,7 +17,22 @@ function page() {
           <p className="text-slate-600">Let's get you signed in</p>
         </article>
 
-        <form action={emailSignIn}></form>
+        <form className="flex flex-col gap-4 my-4" action={emailSignIn}>
+          <article className="flex flex-col justify-start text-start gap-2">
+            <Label htmlFor="email">Email</Label>
+            <Input 
+              type="email"
+              placeholder="kin@aurix.space"
+              name="email"
+              id="email"
+              required
+            />
+          </article>
+
+          <Button type="submit">
+            Sign in
+          </Button>
+        </form>
 
         <h2 className="text-slate-600 text-lg">Or</h2>
 
