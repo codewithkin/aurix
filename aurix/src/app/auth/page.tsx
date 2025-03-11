@@ -29,7 +29,7 @@ function page() {
             />
           </article>
 
-          <Button type="submit">
+          <Button className="p-4" type="submit">
             Sign in
           </Button>
         </form>
@@ -41,7 +41,7 @@ function page() {
           action={redditSignIn}
         >
           <Button
-            className="border-red-500 border text-red-500 font-medium hover:text-white rounded-full hover:border-0 hover:bg-red-500 transition duration-300"
+            className="border-red-500 border text-red-500 font-medium hover:text-white rounded-full hover:border-0 hover:bg-red-500 transition duration-300 w-full p-4"
             variant="outline"
             type="submit"
           >
