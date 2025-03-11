@@ -3,7 +3,7 @@
 import { signIn } from "@/auth";
 
 export async function redditSignIn() {
-  await signIn("reddit");
+  await signIn("reddit", {redirect: true, redirectTo: "/"});
 }
 
 export async function emailSignIn(formData: FormData) {
