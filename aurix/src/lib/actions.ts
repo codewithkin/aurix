@@ -6,6 +6,6 @@ export async function redditSignIn() {
   await signIn("reddit");
 }
 
-export async function emailSignIn() {
-  await signIn("resend");
+export async function emailSignIn(formData: FormData) {
+  await signIn("resend", formData);
 }
